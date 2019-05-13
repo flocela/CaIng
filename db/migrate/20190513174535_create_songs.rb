@@ -21,7 +21,7 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.string :name_of_new_work_license, null:false
       t.string :link_to_new_work_license, null:false
       t.string :orig_english_changes_made
-      t.string :orig_spanish_changes_mande
+      t.string :orig_spanish_changes_made
       t.string :filename, null:false
       t.string :zip_size
 
