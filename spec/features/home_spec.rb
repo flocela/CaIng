@@ -9,7 +9,7 @@ RSpec.describe 'Home features' do
     visit('/home')
     click_link('See All Songs')
     expect(current_path).to eql('/songs')
-    expect(page).to have_content('<h2>Songs</Songs>')
+    expect(page).to have_content('Songs')
   end
 end
 
