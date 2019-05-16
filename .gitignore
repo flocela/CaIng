@@ -28,4 +28,5 @@
 
 .gems/
 **.swp
+**.swo
 true
