@@ -27,5 +27,5 @@
 /config/master.key
 
 .gems/
-**.rb.swp
+**.swp
 true
