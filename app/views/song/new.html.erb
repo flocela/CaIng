@@ -1,0 +1,48 @@
+<h2>New Song</h2>
+<%= form_for(Song.new) do |f| %>
+  <label>
+    New Work Title
+    <%= f.text_field(:new_work_title) %>
+  </label>
+  <label>
+    Song Type
+    <%= f.text_field(:song_type) %>
+  </label>
+  <label>
+    Original Title in E
+    <%= f.text_field(:orig_english_title) %>
+  </label>
+  <label>
+    Original Artist
+    <%= f.text_field(:orig_artist) %>
+  </label>
+  <label>
+    Originally Downloaded At Name
+    <%= f.text_field(:orig_downloaded_at_name) %>
+  </label>
+  <label>
+    Originally Downloaded At Link
+    <%= f.text_field(:orig_downloaded_at_link) %>
+  </label>
+  <label>
+    Original License Name
+    <%= f.text_field(:orig_license_name) %>
+  </label>
+  <label>
+    Original License Link
+    <%= f.text_field(:orig_license_link) %>
+  </label>
+  <label>
+    New License Name
+    <%= f.text_field(:name_of_new_work_license) %>
+  </label>
+  <label>
+    New License Link
+    <%= f.text_field(:link_to_new_work_license) %>
+  </label>
+  <label>
+    Filename
+    <%= f.text_field(:filename) %>
+  </label>
+  <%= submit_tag "Create" %>  
+<% end %>

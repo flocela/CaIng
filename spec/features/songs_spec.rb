@@ -10,4 +10,24 @@ RSpec.describe 'Songs features' do
       expect(page).to have_content('new work title 2')
     end
   end
+  describe 'adding a new song' do
+    it 'adds the song to the list of songs' do
+      visit('/songs/new')
+      fill_in('New Work Title', with: 'New Work Title 3')
+      fill_in('Song Type', with: '3')
+      fill_in('Original Title in E', with: 'Orig Eng Title 3')
+      fill_in('Original Artist', with: 'Orig Artist 3')
+      fill_in('Originally Downloaded At Name', with: 'Orig Downloaded At Name 3')
+      fill_in('Originally Downloaded At Link', with: 'Orig Downloaded At Link 3')
+      fill_in('Original License Name', with: 'Orig License Name 3')
+      fill_in('Original License Link', with: 'Orig License Link 3')
+      fill_in('New License Name', with: 'Name of New Work License 3') 
+      fill_in('New License Link', with: 'Link to New Work License 3')
+      fill_in('Filename', with: 'Filename 3')
+      click_button('Create')
+     
+      expect(current_path).to have_content('/songs')
+      expect(page).to have_content('New Work Title 3')
+    end
+  end
 end
