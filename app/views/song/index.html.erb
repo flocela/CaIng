@@ -1,4 +1,5 @@
 <h2>Songs</h2>
 <% @songs.each do |song| %>
   <%= song.new_work_title %>
+  <%= link_to 'Delete', "songs/#{song.id}", method: :delete %> 
 <% end %>

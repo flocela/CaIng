@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Songs features' do 
- describe 'viewing the index' do
+  describe 'viewing the index' do
     it 'lists all of the songs' do
       create("song", new_work_title: 'new work title 1')
       create("song", new_work_title: 'new work title 2')
@@ -28,6 +28,15 @@ RSpec.describe 'Songs features' do
      
       expect(current_path).to have_content('/songs')
       expect(page).to have_content('New Work Title 3')
+    end
+  end
+  describe 'deleting a song' do
+    it 'deletes a song' do
+      create("song", new_work_title: 'new work title 1')
+      create("song", new_work_title: 'new work title 2')
+      visit('songs')
+      expect(page).to have_content('Delete')
+      click_link('Delete', match: :first)
     end
   end
 end
