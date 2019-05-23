@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get('home' => 'home#index')
-  get('songs' => 'song#index')
-  post('songs' => 'song#create')
-  get('songs/new' => 'song#new')
-  get('song/:id' => 'song#show')
-  delete('songs/:id' => 'song#destroy')
+  get('songs' => 'songs#index')
+  post 'songs', to: 'songs#create'
+  get 'songs/new', to: 'songs#new', as: 'new_song'
+  get('songs/:id' => 'songs#show')
+  delete('songs/:id' => 'songs#destroy')
 end

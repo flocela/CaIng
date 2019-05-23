@@ -1,4 +1,4 @@
-class SongController < ApplicationController
+class SongsController < ApplicationController
   def index
     @songs = Song.all
   end
@@ -7,7 +7,7 @@ class SongController < ApplicationController
   end
   def create
     song = Song.new(song_params)
-   song.save!
+    song.save!
     redirect_to(songs_path)
   end
   def destroy
