@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe SongsController do # SongsController defines the controller. This test must be inside /controllers or /requests directories. Maybe, file also must be named songs_controller.
+RSpec.describe Admin::SongsController do 
+# SongsController defines the controller. This test must be inside /controllers or /requests directories. Maybe, file also must be named songs_controller.
   it 'deletes a song from the list of songs' do
     song1 = create("song", new_work_title: 'new work title 1')
     create("song", new_work_title: 'new work title 2')

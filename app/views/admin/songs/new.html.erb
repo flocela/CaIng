@@ -1,5 +1,5 @@
 <h2>New Song</h2>
-<%= form_for(@song) do |f| %>
+<%= form_for [:admin, @song] do |f| %>
   <label>
     New Work Title
     <%= f.text_field(:new_work_title) %>

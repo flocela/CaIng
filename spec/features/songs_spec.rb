@@ -5,14 +5,14 @@ RSpec.describe 'Songs features' do
     it 'lists all of the songs' do
       create("song", new_work_title: 'new work title 1')
       create("song", new_work_title: 'new work title 2')
-      visit('/songs')
+      visit('admin/songs')
       expect(page).to have_content('new work title 1')
       expect(page).to have_content('new work title 2')
     end
   end
   describe 'adding a new song' do
     it 'adds the song to the list of songs' do
-      visit('/songs/new')
+      visit('/admin/songs/new')
       fill_in('New Work Title', with: 'New Work Title 3')
       fill_in('Song Type', with: '3')
       fill_in('Original Title in E', with: 'Orig Eng Title 3')
@@ -26,7 +26,7 @@ RSpec.describe 'Songs features' do
       fill_in('Filename', with: 'Filename 3')
       click_button('Create')
      
-      expect(current_path).to have_content('/songs')
+      expect(current_path).to have_content('/admin/songs')
       expect(page).to have_content('New Work Title 3')
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe 'Songs features' do
     it 'deletes a song' do
       create("song", new_work_title: 'new work title 1')
       create("song", new_work_title: 'new work title 2')
-      visit('songs')
+      visit('/admin/songs')
       expect(page).to have_content('Delete')
       click_link('Delete', match: :first)
     end

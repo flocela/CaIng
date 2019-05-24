@@ -8,7 +8,7 @@ RSpec.describe 'Home features' do
   it 'displays link to songs page' do
     visit('/home')
     click_link('See All Songs')
-    expect(current_path).to eql('/songs')
+    expect(current_path).to eql('/admin/songs')
     expect(page).to have_content('Songs')
   end
 end
