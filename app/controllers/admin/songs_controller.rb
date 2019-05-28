@@ -1,5 +1,9 @@
 class Admin::SongsController < ApplicationController
+  before_action :authenticate_admin!
   def index
+    unless current_admin
+      redirect_to :back, :alert => "Access denied."
+    end
     @songs = Song.all
   end
   def new
