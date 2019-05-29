@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :admin do
+    
+  end
+
   factory :song do
     new_work_title {"new work title"}
     song_type {"1"}

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :admins
   namespace :admin do
     resources :songs
   end
+  root to: 'home#index'
   get('home' => 'home#index')
   #get('songs' => 'songs#index')
   #post 'songs', to: 'songs#create'
