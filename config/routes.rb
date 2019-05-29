@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :songs
   end
+  get('admin/home' => 'admin/home#index')
   root to: 'home#index'
   get('home' => 'home#index')
   #get('songs' => 'songs#index')
