@@ -2,16 +2,16 @@ class Admin::SongsController < ApplicationController
   before_action :authenticate_admin!
   def index
     puts current_admin.email
-    puts Rails.application.credentials.admin_email
-    if current_admin && current_admin.email == 'flocela@gmail.com'
+    puts Rails.application.credentials.development[:admin_email]
+    if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
     else
       redirect_back(fallback_location: admin_session_path, alert: "Access denied.")
-      #redirect_to :back, :alert => "Access denied."
+     #redirect_to :back, :alert => "Access denied."
     end
   end
   def new
-    if current_admin && current_admin.email == 'flocela@gmail.com'
+    if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
       @song = Song.new()
       #redirect_to :back, :alert => "Access denied."
@@ -20,7 +20,8 @@ class Admin::SongsController < ApplicationController
     end
   end
   def create
-    if current_admin && current_admin.email == 'flocela@gmail.com'
+    if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
+      @songs = Song.all
       song = Song.new(song_params)
       song.save!
       redirect_to(admin_songs_path)
@@ -29,7 +30,8 @@ class Admin::SongsController < ApplicationController
     end
   end
   def destroy
-    if current_admin && current_admin.email == 'flocela@gmail.com'
+    if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
+      @songs = Song.all
       song = Song.new(song_params)
       song = Song.find(params[:id])
       song.destroy

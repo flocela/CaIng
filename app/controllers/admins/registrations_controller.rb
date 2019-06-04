@@ -10,9 +10,11 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     if params[:admin][:email] == Rails.application.credentials.development[:admin_email] 
+       super
+     end
+   end
 
   # GET /resource/edit
   # def edit
