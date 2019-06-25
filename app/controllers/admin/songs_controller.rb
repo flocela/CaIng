@@ -30,9 +30,10 @@ class Admin::SongsController < ApplicationController
     end
   end
   def destroy
+    puts "Hello World"
+    puts params
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
-      song = Song.new(song_params)
       song = Song.find(params[:id])
       song.destroy
       redirect_to admin_songs_path
