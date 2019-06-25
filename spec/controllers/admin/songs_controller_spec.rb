@@ -23,11 +23,18 @@ RSpec.describe Admin::SongsController do
     expect { delete :destroy, params: { id: song1.id } }.to change(Song, :count).by(0)
   end
 
-  it 'creates a song' do
+  it 'creates a song when admin is signed in' do
     song_attributes = attributes_for(:song)
     song_attributes[:new_work_title].should eq('new work title')
     admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
     sign_in admin
     expect { post(:create, params: { song: song_attributes}) }.to change(Song, :count).by(1)
+  end
+
+  it 'does not create a song when admin is not signed in' do
+    song_attributes = attributes_for(:song)
+    song_attributes[:new_work_title].should eq('new work title')
+    admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
+    expect { post(:create, params: { song: song_attributes}) }.to change(Song, :count).by(0)
   end
 end
