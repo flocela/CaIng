@@ -11,6 +11,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
+     puts "inside registrations_controller.rb CREATE"
      if params[:admin][:email] == Rails.application.credentials.development[:admin_email] 
        super
      end

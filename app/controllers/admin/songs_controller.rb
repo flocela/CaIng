@@ -1,8 +1,6 @@
 class Admin::SongsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    puts current_admin.email
-    puts Rails.application.credentials.development[:admin_email]
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
     else
@@ -30,8 +28,6 @@ class Admin::SongsController < ApplicationController
     end
   end
   def destroy
-    puts "Hello World"
-    puts params
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
       song = Song.find(params[:id])
