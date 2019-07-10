@@ -1,7 +1,7 @@
 class Admin::SongsController < ApplicationController
   before_action :authenticate_admin!
   def index
-    if current_admin 
+    if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
     else
       redirect_back(fallback_location: admin_session_path, alert: "Access denied.")

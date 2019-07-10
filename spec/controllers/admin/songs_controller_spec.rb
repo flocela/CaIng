@@ -2,7 +2,21 @@ require 'rails_helper'
 
 RSpec.describe Admin::SongsController do 
 # SongsController defines the controller. This test must be inside /controllers or /requests directories. Maybe, file also must be named songs_controller.
- it 'flocela admin deletes a song from the list of songs' do
+  it 'allows flocela admin to open admin/songs/index' do
+    admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
+    sign_in admin
+    get :index
+    expect(response).to render_template("index")
+  end
+  
+  it 'does not allow admin other than flocela to open admin/songs/index' do
+    admin = Admin.create!(email: "abc@gmail.com", password: "very-secret", password_confirmation: "very-secret")
+    sign_in admin
+    get :index
+    expect(response).to redirect_to(admin_session_path)
+  end
+ 
+  it 'flocela admin deletes a song from the list of songs' do
     admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
     sign_in admin
     song1 = create("song", new_work_title: 'new work title 1')
