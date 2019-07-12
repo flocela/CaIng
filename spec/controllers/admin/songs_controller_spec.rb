@@ -15,7 +15,19 @@ RSpec.describe Admin::SongsController do
     get :index
     expect(response).to redirect_to(admin_session_path)
   end
- 
+
+  it 'allows flocela admin to update a song' do
+    admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
+    sign_in admin
+    song1 = create("song", new_work_title: 'new work title 1', song_type: '1')
+    expect(Song.count).to eq(1)
+    create("song", new_work_title: 'new work title 2')
+    expect(Song.count).to eq(2)
+    put :update, params: {id: song1.id, song: {new_work_title: "changed title"}}
+    expect(Song.find(song1.id).new_work_title).to eql("changed title")    
+    expect(Song.find(song1.id).song_type).to eql(1)
+  end
+
   it 'flocela admin deletes a song from the list of songs' do
     admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
     sign_in admin
