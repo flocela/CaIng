@@ -19,7 +19,6 @@ class Admin::SongsController < ApplicationController
   end
   def create
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
-      @songs = Song.all
       song = Song.new(song_params)
       song.save!
       redirect_to(admin_songs_path)
