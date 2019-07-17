@@ -2,6 +2,7 @@
 <% @songs.each do |song| %>
   <%= song.new_work_title %>
   <%= link_to 'Delete', "songs/#{song.id}", method: :delete %> 
+  <%= link_to 'Edit', "songs/#{song.id}/edit", method: :get %> 
 <% end %>
 <%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
 
