@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get('home' => 'home#index')
   get('songs' => 'songs#index')
+  get "songs/get_zip/:id" => "songs#get_zip", :as => "songs_get_zip"
 end
