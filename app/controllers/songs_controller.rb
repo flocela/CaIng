@@ -34,14 +34,15 @@ class SongsController < ApplicationController
   end
 
   def get_zip
-    access_key_id = Rails.application.credentials.development[:aws][:access_key_id]
-    secret_access_key = Rails.application.credentials.development[:aws][:secret_access_key]
+    access_key_id = Rails.application.credentials[Rails.env.to_sym][:aws][:access_key_id]
+    secret_access_key = Rails.application.credentials[Rails.env.to_sym][:aws][:secret_access_key]
     s3 = Aws::S3::Resource.new(region: 'us-east-1', access_key_id: access_key_id, secret_access_key: secret_access_key)
-    s3_file_path ="m4a/amazing_grace_rich_tuttle.zip"
+    filename = Song.find(params[:id]).filename + '.zip';
+    s3_file_path ="m4a/#{filename}"
     object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
-    object.get(response_target: 'amazing_grace_downloaded.zip')  
-    File.chmod(0666, "amazing_grace_downloaded.zip")
-    send_file "amazing_grace_downloaded.zip", :filename => "amazing_grace_downloaded.zip", :url_based_filename => false, :type=>"application/zip"
+    object.get(response_target: "#{Rails.root}/app/assets/songs/#{filename}")
+    File.chmod(0666, "#{Rails.root}/app/assets/songs/#{filename}")
+    send_file "#{Rails.root}/app/assets/songs/#{filename}", :filename => "#{filename}", :url_based_filename => false, :type=>"application/zip"
   end
 =begin
 
