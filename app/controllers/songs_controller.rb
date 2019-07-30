@@ -1,3 +1,4 @@
+require 'aws-sdk'
 class SongsController < ApplicationController
   def index
     @songs = Song.all
@@ -33,16 +34,16 @@ class SongsController < ApplicationController
   end
 
   def get_zip
-   @song = Song.find(params[:id])
-   redirect_to "https://cantandoinglesbucket.s3.amazonaws.com/simple/#{@song.filename}"
-   #dealWithDownloads
-  end   
+    access_key_id = Rails.application.credentials.development[:aws][:access_key_id]
+    secret_access_key = Rails.application.credentials.development[:aws][:secret_access_key]
+    s3 = Aws::S3::Resource.new(region: 'us-east-1', access_key_id: access_key_id, secret_access_key: secret_access_key)
+    s3_file_path ="m4a/amazing_grace_rich_tuttle.zip"
+    object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
+    object.get(response_target: 'amazing_grace_downloaded.zip')  
+    File.chmod(0666, "amazing_grace_downloaded.zip")
+    send_file "amazing_grace_downloaded.zip", :filename => "amazing_grace_downloaded.zip", :url_based_filename => false, :type=>"application/zip"
+  end
 =begin
-    songid = params[:id]
-      filename = Song.find(songid).filename
-      s3 = AWS::S3.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
-      bucket = s3.buckets[ENV['S3_BUCKET_NAME_CI']]
 
       s3_file_path ="m4a/#{filename}.zip"
       temp_dir_name ="#{Rails.root}/public/system/songs/temp_m4a"
