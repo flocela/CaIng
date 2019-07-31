@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_202731) do
   create_table "download_counts", force: :cascade do |t|
     t.integer "song_id"
     t.date "month"
-    t.integer "month_total"
+    t.integer "month_total", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
