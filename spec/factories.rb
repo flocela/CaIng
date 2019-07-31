@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :download_count do
+    song_id { 1 }
+    month { "2019-07-31" }
+    month_total { 1 }
+  end
+
   #factory :admin do
   #  email "flocela@gmail.com"
   #  password "12341234"
