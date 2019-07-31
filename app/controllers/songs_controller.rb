@@ -39,11 +39,9 @@ class SongsController < ApplicationController
     s3 = Aws::S3::Resource.new(region: 'us-east-1', access_key_id: access_key_id, secret_access_key: secret_access_key)
     filename = Song.find(params[:id]).filename;
     s3_file_path ="m4a/#{filename}"
-    #object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
-    #object.get(response_target: "#{Rails.root}/app/assets/songs/#{filename}")
     object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
-    object.get(response_target: "app/assets/songs/#{filename}")
-    File.chmod(0666, "app/assets/songs/#{filename}")
+    object.get(response_target: "#{Rails.root}/app/assets/songs/#{filename}")
+    File.chmod(0666, "#{Rails.root}/app/assets/songs/#{filename}")
     send_file "app/assets/songs/#{filename}", :filename => "#{filename}", :url_based_filename => false, :type=>"application/zip"
   end
 =begin
