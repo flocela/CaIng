@@ -1,0 +1,12 @@
+.songs-flex-container {
+  display: flex;
+  background-color: #029;
+  flex-wrap: wrap;
+}
+
+.song-box {
+  background-color:#822;
+  height: 100px;
+  flex-basis: 100px;
+  text-align: center;   
+}

@@ -1,5 +1,9 @@
 <h2>Songs</h2>
-<% @songs.each do |song| %>
-  <%= song.new_work_title %>
-<% end %>
+<section class="songs-flex-container">
+  <% @songs.each do |song| %>
+    <section class="song-box">
+      <%= song.new_work_title %>
+    </section> 
+  <% end%>
+</section>
 
