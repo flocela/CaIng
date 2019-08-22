@@ -4,14 +4,14 @@
     <title>CaIng</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Ubuntu+Mono|Josefin+Sans|Questrial:300,400,600,700&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <section class="notice"><%= notice %></section>
+    <section class="alert"><%= alert %></section>
     <%= yield %>
   </body>
 </html>
