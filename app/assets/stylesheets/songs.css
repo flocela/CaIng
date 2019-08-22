@@ -1,12 +1,72 @@
+.wrapper {
+  background-color:#fff9f5;
+}
 .songs-flex-container {
   display: flex;
-  background-color: #029;
   flex-wrap: wrap;
+  justify-content:center;
+  padding-top:32px;
 }
 
 .song-box {
-  background-color:#822;
-  height: 100px;
-  flex-basis: 100px;
+  font-family: 'Josefin Sans', Arial;
+  padding:20px;
+  width: 500px;
+  flex-shrink:1;
   text-align: center;   
+}
+
+.song_info {
+  display:block;
+  font-size:.875rem;
+  padding-bottom:5px;
+}
+
+.copyright {
+  display:block;
+  width: 600px;
+  margin: 0 auto;
+  padding-top:20px;
+  font-family: 'Josefin Sans', Arial;
+  font-size:.875rem;
+  padding-bottom:5px;
+  text-align:center;
+}
+.song-title {
+  display:block;
+  font-size:1.5rem;
+  padding-bottom:5px;
+}
+
+h1 {
+  font-size:.875rem;
+  letter-spacing:1px;
+  font-weight:600;
+  font-family: 'Josefin Sans', Arial;
+  text-align:center;
+  padding-top:28px;
+  padding-bottom:40px;
+  color:#1c5e6a;
+  margin:0;
+}
+
+h2 {
+  font-size:4.0rem;
+  letter-spacing:6px;
+  font-weight:700;
+  font-family: 'Josefin Sans', Arial;
+  text-align:center;
+  margin-top:0px;
+  margin-bottom:14px;
+  color:#3c2b21;
+}
+
+.orig-title {
+  color:#1c5e6a;
+  font-weight:700;
+}
+
+.orig-artist {
+  color:#1c5e6a;
+  font-weight:700;
 }

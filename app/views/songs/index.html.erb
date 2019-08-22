@@ -1,9 +1,52 @@
-<h2>Songs</h2>
-<section class="songs-flex-container">
-  <% @songs.each do |song| %>
-    <section class="song-box">
-      <%= song.new_work_title %>
-    </section> 
-  <% end%>
+<section class=wrapper>
+  <h1>Cantando Inglés</h1>
+  <h2>Songs</h2>
+  <section class="copyright">
+    Downloads are available for free to use in the Cantando Inglés Android Application. If you're downloading for other uses, see license information for restrictions.
+  </section>
+  <section class="songs-flex-container">
+    <% @songs.each do |song| %>
+      <section class="song-box">
+	<section class=song-title>
+	  <%= song.new_work_title %>
+	</section>
+	<section class=labels>
+	  <section class="song_info orig-title">
+	    Original Title: 
+	    <%= song.orig_english_title %>
+	  </section>
+	  <section class="song_info orig-artist">
+	    Original Artist:  <%= song.orig_artist %>
+	  </section>
+	  <section class=song_info>
+	    Difficulty of Song: <%= song.song_type %>
+	  </section>
+	  <section class=song_info>
+	    Original Downloaded at:  <%= song.orig_downloaded_at_name %>
+	  </section>
+	  <section class=song_info>
+	    Original Published: <%= song.orig_pub_date %>
+	  </section>
+	  <section class=song_info>
+	    Original Song Lyrics Dated: <%= song.orig_lyrics_date %>
+	  </section>
+	  <section class=song_info>
+	    Original License: <%= song.orig_lyrics_date_link_name %>
+	  </section>
+	  <section class=song_info>
+	    New Work License: <%= song.orig_license_name %>
+	  </section>
+	  <section class=song_info>
+	    Changes Made: <%= song.orig_english_changes_made %>
+	  </section>
+	  <section class=song_info>
+	    Filename: <%= song.filename %>
+	  </section>
+	  <section class=song_info>
+	    File size: <%= song.zip_size %>
+	  </section>
+	</section>
+      </section> 
+    <% end %>
+  </section>
 </section>
-
