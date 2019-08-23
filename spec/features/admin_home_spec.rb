@@ -19,16 +19,20 @@ RSpec.describe 'Admin Home Links To Songs' do
     expect(current_path).to eql('/admin/songs')
   end
   
-  it 'displays forwards to /admins/sign_in when click on See All Songs and an admin other than flocela is logged in' do
+  it 'will not register admin that is not flocela@gmail.com' do
     visit('/admins/sign_up')
     fill_in('Email', with: 'abc@gmail.com')
     fill_in('Password', with: 'very-secret')
     fill_in('Password confirmation', with: 'very-secret')
     click_button('Sign up')
-    expect(current_path).to eql('/')
+    expect(Admin.count).to equal(0)
+  end
+  
+  it 'if admin is not signed in then can not see admin/songs' do
+    expect(Admin.count).to equal(0)
     visit('/admin/home')
     click_link('See All Songs')
-    expect(current_path).to eql('/admin/sign_in')
+    expect(page).to have_content('You need to sign in or sign up')
   end
 
 end
