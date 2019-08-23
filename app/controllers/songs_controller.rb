@@ -53,6 +53,7 @@ class SongsController < ApplicationController
       newDownloadCount = DownloadCount.new(:song_id => song.id, month: Date.current.beginning_of_month, :month_total => 1)
       newDownloadCount.save
     end
+    File.delete('app/assets/songs/${filename}') if File.exists?('app/assets/songs/#{filename}')
   end
 
   def dealWithDownloads
