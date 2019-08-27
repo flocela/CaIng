@@ -3,39 +3,54 @@
 }
 .songs-flex-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
+  padding-top:33px;
+  width:100%;
+  max-width:1260px;
+  margin-left:auto;
+  margin-right:auto;
   justify-content:center;
-  padding-top:32px;
 }
 
 .song-box {
   font-family: 'Josefin Sans', Arial;
-  padding:20px;
-  width: 500px;
-  flex-shrink:1;
+  flex-basis:360px;
+  min-width:0px;
   text-align: center;   
+  padding-top:20px;
+  padding-bottom:30px;
+  margin-left:30px;
+  margin-right:30px;
 }
 
 .song_info {
-  display:block;
   font-size:.875rem;
   padding-bottom:5px;
-}
-
-.copyright {
-  display:block;
-  width: 600px;
-  margin: 0 auto;
-  padding-top:20px;
-  font-family: 'Josefin Sans', Arial;
-  font-size:.875rem;
-  padding-bottom:5px;
+  margin-left:auto;
+  margin-right:auto;
+  //background-color:#ddd;
   text-align:center;
 }
+
 .song-title {
   display:block;
   font-size:1.5rem;
   padding-bottom:5px;
+  //background-color:#ddd;
+}
+
+.orig-title {
+  color:#1c5e6a;
+  font-weight:700;
+}
+
+.orig-artist {
+  color:#1c5e6a;
+  font-weight:700;
+}
+
+.filename {
+  word-wrap: break-word;
 }
 
 h1 {
@@ -61,12 +76,15 @@ h2 {
   color:#3c2b21;
 }
 
-.orig-title {
-  color:#1c5e6a;
-  font-weight:700;
+.copyright {
+  display:block;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top:20px;
+  padding: 20px 10px 0px 10px;
+  font-family: 'Josefin Sans', Arial;
+  font-size:.875rem;
+  padding-bottom:5px;
+  text-align:center;
 }
 
-.orig-artist {
-  color:#1c5e6a;
-  font-weight:700;
-}
