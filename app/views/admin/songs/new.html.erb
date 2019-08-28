@@ -19,8 +19,8 @@
   <h1>Cantando Inglés</h1> 
 	<h2>New Song</h2>
 	<%= form_for [:admin, @song] do |f| %>
-		<section class="song-box">
-			<section class="song_info">
+		<section class="song-info-flex-container">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  New Work Title:
@@ -30,7 +30,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Song Type:
@@ -40,7 +40,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Original Title in English:
@@ -50,7 +50,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Original Artist:
@@ -60,7 +60,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Originally Downloaded At Name:
@@ -70,7 +70,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Originally Downloaded At Link:
@@ -80,7 +80,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Original License Name:
@@ -90,7 +90,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Original License Link:
@@ -100,7 +100,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  New License Name:
@@ -110,7 +110,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  New License Link:
@@ -120,7 +120,7 @@
           </section>
 				</label>
 			</section>
-			<section class="song_info">
+			<section class="song-info">
 				<label>
           <section class=description>
 					  Filename:
@@ -136,4 +136,6 @@
 		</section>
 	<% end %>
 </section>
+
+
 
