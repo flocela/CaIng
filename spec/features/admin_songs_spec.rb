@@ -1,5 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Features Admin Songs' do
+
   describe 'signing up as flocela and then ' do
     before(:each) do
       visit('/admins/sign_up')
@@ -61,6 +62,7 @@ RSpec.describe 'Features Admin Songs' do
     end
   
     it 'deletes a song it just created' do
+      #Capybara.current_driver = :selenium
       visit('/admin/songs/new')
       fill_in('New Work Title', with: 'New Work Title 3')
       fill_in('Song Type', with: '3')
@@ -77,7 +79,10 @@ RSpec.describe 'Features Admin Songs' do
       expect(current_path).to have_content('/admin/songs')
       expect(page).to have_content('New Work Title 3')
       click_link('Delete')
-      expect(page).to have_no_content('New Work Title 3')
+      a = page.driver.browser.switch_to.alert
+      expect(a.text).to eq("Are you sure?")
+      a.accept
+      expect(page).to have_no_content('New Work Title 3', wait:5)
     end
   end
 end

@@ -63,10 +63,10 @@
 	    File size: <%= song.zip_size %>
 	  </section>
           <section class=song_info>
-            <%= link_to 'Delete', "songs/#{song.id}", method: :delete %> 
+            <%= link_to 'Delete', "songs/#{song.id}", method: :delete, data: { confirm: 'Are you sure?' } %> 
           </section>
           <section class=song_info>
-            <%= link_to 'Edit', "songs/#{song.id}/edit", method: :get %> 
+            <%= link_to 'Edit', "#{song.id}/edit", method: :get %> 
           </section>
         </section>
       </section>
