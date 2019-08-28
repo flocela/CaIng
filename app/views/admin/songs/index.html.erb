@@ -1,9 +1,75 @@
-<h2>Songs</h2>
-<%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
-<%= link_to 'New Song', new_admin_song_path%>
-<% @songs.each do |song| %>
-  <%= song.new_work_title %>
-  <%= link_to 'Delete', "songs/#{song.id}", method: :delete %> 
-  <%= link_to 'Edit', "songs/#{song.id}/edit", method: :get %> 
-<% end %>
-
+<section class=admin-song-wrapper>
+  <section class="menu-flex-container">
+    <section class=link>
+      home
+    </section>
+    <section class=link>
+      admin-home
+    </section>
+    <section class=selected>
+      all songs
+    </section>
+    <section class=link>
+      <%= link_to 'new song', new_admin_song_path %>
+    </section>
+    <section class=link>
+      <%= link_to 'sign-out', destroy_admin_session_path, method: :delete %>
+    </section>
+  </section> 
+  <h1>Cantando Inglés</h1> 
+  <h2>Songs</h2>
+  <section class="copyright">
+    Downloads are available for free to use in the Cantando Inglés Android application. If you're downloading for other uses, see license information for restrictions. The artists have provided a license for each song, see 'Original License'. The 'New Work' is the original song plus the translations; its license is under 'New Work License'.
+  </section>
+  <section class="songs-flex-container">
+    <% @songs.each do |song| %>
+      <section class="song-box">
+        <section class=song-title>
+          <%= song.new_work_title%>
+        </section>
+        <section class=labels>
+	  <section class="song_info orig-title">
+	    Original Title: 
+	    <%= song.orig_english_title %>
+	  </section>
+	  <section class="song_info orig-artist">
+	    Original Artist:  <%= song.orig_artist %>
+	  </section>
+	  <section class=song_info>
+	    Difficulty of Song: <%= song.song_type %>
+	  </section>
+	  <section class=song_info>
+	    Original Downloaded at:  <%= song.orig_downloaded_at_name %>
+	  </section>
+          <section class=song_info>
+            Original Published: <%= song.orig_pub_date %>
+	  </section>
+	  <section class=song_info>
+	    Original Song Lyrics Dated: <%= song.orig_lyrics_date %>
+	  </section>
+	  <section class=song_info>
+	    Original License: <%= song.orig_lyrics_date_link_name %>
+	  </section>
+	  <section class=song_info>
+	    New Work License: <%= song.orig_license_name %>
+	  </section>
+	  <section class=song_info>
+	    Changes Made: <%= song.orig_english_changes_made %>
+	  </section>
+	  <section class="song_info filename">
+	    Filename: <%= song.filename %>
+	  </section>
+	  <section class=song_info>
+	    File size: <%= song.zip_size %>
+	  </section>
+          <section class=song_info>
+            <%= link_to 'Delete', "songs/#{song.id}", method: :delete %> 
+          </section>
+          <section class=song_info>
+            <%= link_to 'Edit', "songs/#{song.id}/edit", method: :get %> 
+          </section>
+        </section>
+      </section>
+    <% end %>
+  </section>
+</section>
