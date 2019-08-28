@@ -34,58 +34,52 @@
   }  
   
   h1 {
+    font-size:.875rem;
+    letter-spacing:1px;
+    font-weight:600;
+    font-family: 'Josefin Sans', Arial;
+    text-align:center;
+    color:#1c5e6a;
+    margin:0;
     padding:45px 0 35px 0;
   }
 
   h2 {
+    font-size:4.0rem;
+    letter-spacing:6px;
+    font-weight:700;
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:14px;
+    color:#3c2b21;
     padding: 20px 0 20px 0;
   }
+  
+  .song_info {
+    height:16px;
+  }
+
+  .create-button {
+    padding:8px;
+  }
+
+  .description {
+    display:inline-block;
+    width:30%;
+    float:left;
+    text-align:right;
+    vertical-align:top;
+    padding-top:.2rem;
+  }
+
+  .input {
+    display:inline-block;
+    width:69%;
+    float:right;
+    vertical-align:top;
+    text-align:left;
+    margin-left:1%;
+  }
+
 }
 
-h1 {
-  font-size:.875rem;
-  letter-spacing:1px;
-  font-weight:600;
-  font-family: 'Josefin Sans', Arial;
-  text-align:center;
-  padding-top:35px;
-  padding-bottom:45px;
-  color:#1c5e6a;
-  margin:0;
-}
-
-h2 {
-  font-size:4.0rem;
-  letter-spacing:6px;
-  font-weight:700;
-  text-align:center;
-  margin-top:0px;
-  margin-bottom:14px;
-  color:#3c2b21;
-}
-
-.song_info {
-  height:16px;
-}
-
-.create-button {
-  padding:8px;
-}
-
-.description {
-  display:inline-block;
-  width:30%;
-  float:left;
-  text-align:right;
-  vertical-align:top;
-  padding-top:.2rem;
-}
-
-.input {
-  display:inline-block;
-  width:69%;
-  float:right;
-  vertical-align:top;
-  text-align:left;
-  margin-left:1%;
-}
