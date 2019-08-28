@@ -23,7 +23,7 @@
 			<section class="song_info">
 				<label>
           <section class=description>
-					  New Work Title
+					  New Work Title:
 					</section>
           <section class=input>
             <%= f.text_field(:new_work_title, size:"75") %>
@@ -33,104 +33,106 @@
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Song Type
+					  Song Type:
           </section>
           <section class=input>
-					  <%= f.text_field(:song_type) %>
+					  <%= f.text_field(:song_type, size:"10") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Original Title in E
+					  Original Title in English:
           </section>
           <section class=input>
-				  	<%= f.text_field(:orig_english_title) %>
+				  	<%= f.text_field(:orig_english_title, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Original Artist
+					  Original Artist:
           </section>
           <section class=input>
-					  <%= f.text_field(:orig_artist) %>
+					  <%= f.text_field(:orig_artist, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Originally Downloaded At Name
+					  Originally Downloaded At Name:
           </section>
           <section class=input>
-				  	<%= f.text_field(:orig_downloaded_at_name) %>
+				  	<%= f.text_field(:orig_downloaded_at_name, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Originally Downloaded At Link
+					  Originally Downloaded At Link:
           </section>
           <section class=input>
-				  	<%= f.text_field(:orig_downloaded_at_link) %>
+				  	<%= f.text_field(:orig_downloaded_at_link, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Original License Name
+					  Original License Name:
           </section>
           <section class=input>
-				  	<%= f.text_field(:orig_license_name) %>
+				  	<%= f.text_field(:orig_license_name, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Original License Link
+					  Original License Link:
           </section>
           <section class=input>
-				  	<%= f.text_field(:orig_license_link) %>
+				  	<%= f.text_field(:orig_license_link, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  New License Name
+					  New License Name:
           </section>
           <section class=input>
-				  	<%= f.text_field(:name_of_new_work_license) %>
+				  	<%= f.text_field(:name_of_new_work_license, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  New License Link
+					  New License Link:
           </section>
           <section class=input>
-				  	<%= f.text_field(:link_to_new_work_license) %>
+				  	<%= f.text_field(:link_to_new_work_license, size:"75") %>
           </section>
 				</label>
 			</section>
 			<section class="song_info">
 				<label>
           <section class=description>
-					  Filename
+					  Filename:
           </section>
           <section class=input>
-				  	<%= f.text_field(:filename) %>
+				  	<%= f.text_field(:filename, size:"75") %>
           </section>
 				</label>
 			</section>
-			<%= submit_tag "Create" %>  
+      <section class=create-button>
+			  <%= submit_tag "Create" %>  
+      </section>
 		</section>
 	<% end %>
 </section>
