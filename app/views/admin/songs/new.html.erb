@@ -1,19 +1,19 @@
 <section class=admin-song-new-wrapper>
   <section class="menu-flex-container">
     <section class=link>
-      home
+      <%= link_to('Home', home_path) %>
     </section>
     <section class=link>
-      admin-home
+      <%= link_to('Admin Home', admin_home_path) %>
     </section>
     <section class=selected>
-      all songs
+      <%= link_to('All Songs', admin_songs_path) %> 
     </section>
     <section class=link>
-      <%= link_to 'new song', new_admin_song_path %>
+      <%= link_to 'New Song', new_admin_song_path %>
     </section>
     <section class=link>
-      <%= link_to 'sign-out', destroy_admin_session_path, method: :delete %>
+      <%= link_to 'Sign-Out', destroy_admin_session_path, method: :delete %>
     </section>
   </section> 
   <h1>Cantando Inglés</h1> 
