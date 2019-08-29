@@ -1,35 +1,35 @@
 <section class=home-wrapper>
   <section class="menu-flex-container-xs">
     <section class="link">
-      Home
+      <%= link_to('Home', home_path) %>
     </section>
     <section class="link">
-      Apps By Flo
+      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
     </section>
     <section class="selected">
-      <%= link_to 'All Songs', "songs", method: :get %>
+      <%= link_to('All Songs', songs_path) %>
     </section>
   </section>
   <section class="menu-flex-container-xs">
     <section class="link">
-      Play Store
+      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
     </section>
     <section class="link">
-      Español
+      Españo
     </section>
   </section>
   <section class="menu-flex-container-sm">
     <section class="link">
-      Home
+      <%= link_to('Home', home_path) %>
     </section>
     <section class="link">
-      Play Store
+      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
     </section>
     <section class="link">
-      Apps By Flo
+      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
     </section>
     <section class="selected">
-      All Songs
+      <%= link_to('All Songs', songs_path) %>
     </section>
     <section class="link">
       Español
