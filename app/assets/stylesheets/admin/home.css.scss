@@ -1,0 +1,16 @@
+.home-wrapper {
+  .admin-links-flex-container {
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    max-width:800px;
+    justify-content:space-evenly;
+    margin: 20px auto 20px auto;
+  }
+
+  .admin-link {
+    flex-basis:100px;
+    max-width: 100px;
+    flex-grow:1;
+  }
+}
