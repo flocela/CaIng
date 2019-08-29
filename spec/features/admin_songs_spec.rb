@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe 'Features Admin Songs' do
-
   describe 'signing up as flocela and then ' do
     before(:each) do
       visit('/admins/sign_up')
@@ -9,12 +8,11 @@ RSpec.describe 'Features Admin Songs' do
       fill_in('Password confirmation', with: 'very-secret')
       click_button('Sign up')
       expect(current_path).to eql('/')
-      
     end
     
     it 'links to New Song Page' do
       visit('/admin/songs')
-      click_link('New Song')
+      click_link('new song')
       expect(current_path).to have_content('/admin/songs/new')  
     end 
  
@@ -60,9 +58,21 @@ RSpec.describe 'Features Admin Songs' do
       expect(current_path).to have_content('/admin/songs')
       expect(page).to have_content('New Work Title 4')
     end
-  
+ 
+  end
+
+  describe 'selenium driver, then signing up as flocela and then ' do
+    before(:each) do
+      Capybara.current_driver = :selenium
+      visit('/admins/sign_up')
+      fill_in('Email', with: 'flocela@gmail.com')
+      fill_in('Password', with: 'very-secret')
+      fill_in('Password confirmation', with: 'very-secret')
+      click_button('Sign up')
+      expect(current_path).to eql('/')
+    end
+    
     it 'deletes a song it just created' do
-      #Capybara.current_driver = :selenium
       visit('/admin/songs/new')
       fill_in('New Work Title', with: 'New Work Title 3')
       fill_in('Song Type', with: '3')
@@ -83,6 +93,7 @@ RSpec.describe 'Features Admin Songs' do
       expect(a.text).to eq("Are you sure?")
       a.accept
       expect(page).to have_no_content('New Work Title 3', wait:5)
+      Capybara.use_default_driver
     end
   end
 end

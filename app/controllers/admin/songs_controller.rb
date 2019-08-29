@@ -47,7 +47,7 @@ class Admin::SongsController < ApplicationController
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
       song = Song.find(params[:id])
-      #song.destroy
+      song.destroy
       puts ("Not destroyed.")
       redirect_to admin_songs_path
     else
