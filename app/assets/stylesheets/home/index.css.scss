@@ -1,48 +1,63 @@
 .home-wrapper {
-  background-color:#fff9f5;
+  background-color:#fdf9f5;
+  //  background-color:#fff1ea;
+  //background-color:#f0e5e1;
   font-family: 'Josefin Sans', Arial;
-  padding-top:20px;
-  padding-bottom:20px;
+  padding:20px 5px 20px 5px;
+  
+  .link-home {
+    a {
+      font-weight:700;
+    }
+  }
 
   h1 {
-    font-size:3.0rem;
+    color:#3d1c15;
+    font-size:2.75rem;
     letter-spacing:4px;
     font-weight:700;
     text-align:center;
     margin-top:0px;
     margin-bottom:0px;
-    color:#1c5e6a;
+    //color:#1c5e6a;
     padding-top:25px;
     padding-bottom:35px;
   }
-  .phone-images-flex-container {
-    display:flex;
-    flex-wrap: wrap;
-    width:100%;
-    max-width:840px;
-    justify-content:space-evenly;
-    margin:0 auto 10px auto;
-  }
+  
+  .phone-images-wrapper { 
+    padding:0 20px;
+    max-width:320px;
+    margin:0 auto 0 auto;
+    .phone-images-flex-container {
+      display:flex;
+      flex-wrap: wrap;
+      width:auto;
+      justify-content:center;
+      margin:0 auto 10px auto;
+      padding:0 0px;
+    }
 
-  .phone-image {
-    flex-basis:300px;
-    max-width: 300px;
-    flex-grow:1;
-    margin:0 0 30px 0;
-    padding:0 20px 0 20px;
+    .phone-image {
+      flex-basis:280px;
+      max-width: 280px;
+      flex-grow:1;
+      margin:0 0 30px 0;
+      padding:0 0px 0 0px;
 
-    img {
-      width:100%;
-      height:auto;
-      border-style:solid;
-      border-color:#3c2b21;
-      border-width:1px;
+      img {
+	width:100%;
+	height:auto;
+	border-style:solid;
+	border-color:#3c2b21;
+	border-width:1px;
+      }
     }
   }
-  
+
   .introduction {
+    color:#3d1c15;
     font-size:0.875rem;
-    max-width:660px;
+    max-width:670px;
     text-align:center;
     padding: 0 20px 0 20px;
     margin:0 auto 60px auto;
@@ -54,17 +69,37 @@
       letter-spacing:6px;
       font-weight:700;
       text-align:center;
-      margin-top:14px;
-      margin-bottom:14px;
-      color:#1c5e6a;
-      padding-top:45px;
-      padding-bottom:55px;
+      margin-top:0px;
+      margin-bottom:0px;
+      padding:35px 20px 45px 20px;
     }
+  }
+
+  @media only screen and (min-width: 520px) {
+    h1 {
+      padding:45px 20px 55px 20px;
+    }
+  }
+      
+  
+  @media only screen and (min-width:760px) {
+    .introduction {
+      padding: 0 0px;
+      width:80%;
+    }
+    .phone-images-wrapper {
+      padding:0px;
+      width:80%;
+      max-width:670px;
+      .phone-images-flex-container {
+        justify-content:space-between;
+      }
+    }
+   
+    h1 {
+      padding:60px 20px 70px 20px;
+    }   
+
   }
   
-  @media only screen and (min-width:500px) {
-    .menu-flex-container-sm {
-      max-width:800p;
-    }
-  }
 }

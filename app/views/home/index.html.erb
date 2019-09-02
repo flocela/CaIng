@@ -1,50 +1,20 @@
 <section class=home-wrapper>
-  <section class="menu-flex-container-xs">
-    <section class="link">
-      <%= link_to('Home', home_path) %>
-    </section>
-    <section class="link">
-      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
-    </section>
-    <section class="selected">
-      <%= link_to('All Songs', songs_path) %>
-    </section>
-  </section>
-  <section class="menu-flex-container-xs">
-    <section class="link">
-      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
-    </section>
-    <section class="link">
-      Españo
-    </section>
-  </section>
-  <section class="menu-flex-container-sm">
-    <section class="link">
-      <%= link_to('Home', home_path) %>
-    </section>
-    <section class="link">
-      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
-    </section>
-    <section class="link">
-      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
-    </section>
-    <section class="selected">
-      <%= link_to('All Songs', songs_path) %>
-    </section>
-    <section class="link">
-      Español
-    </section>
-  </section>
+  <%= render 'header_basic' %>
   <h1>Cantando Inglés</h1>
   <section class=introduction>
     An Android Application for Spanish speakers to learn English.  Shows lyrics in English and Spanish while song is playing. Shows notes explaining words that have multiple meanings. Download application from the Google Play Store for free. Download songs for free. Check out the video. For phones with Android 4.0 and above. 
   </section>
-  <section class="phone-images-flex-container">
-    <section class="phone-image">
-      <%=image_tag("app-screen-shot-home-page-1.png", alt:"Android Application Image 1")%>
+  <section class="phone-images-wrapper">
+    <section class="phone-images-flex-container">
+      <section class="phone-image">
+	<%=image_tag("app-screen-shot-home-page-1.png", alt:"Android Application Image 1")%>
+      </section>
+      <section class="phone-image">
+	<%=image_tag("app-screen-shot-home-page-2.png", alt:"Android Application Image 2") %>
+      </section>
     </section>
-    <section class="phone-image">
-      <%=image_tag("app-screen-shot-home-page-2.png", alt:"Android Application Image 2") %>
-    </section>
+  </section>
+  <section class=introduction>
+    I hope these apps help someone on their way.  - Aurea Flocela Maldonado
   </section>
 </section>

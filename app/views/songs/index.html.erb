@@ -1,41 +1,11 @@
-<section class=wrapper>
-  <section class="menu-flex-container-xs">
-    <section class="link">
-      <%= link_to('Home', home_path) %>
-    </section>
-    <section class="link">
-      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
-    </section>
-    <section class="selected">
-      <%= link_to('All Songs', songs_path) %>
-    </section>
+<section class=songs-wrapper>
+  <section class=title-sm>
+    <h1>Cantando Inglés</h1>
   </section>
-  <section class="menu-flex-container-xs">
-    <section class="link">
-      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
-    </section>
-    <section class="link">
-      Español
-    </section>
+  <%= render 'header_basic' %>
+  <section class=title-xs>
+    <h1>Cantando Inglés</h1>
   </section>
-  <section class="menu-flex-container-sm">
-    <section class="link">
-      <%= link_to('Home', home_path) %>
-    </section>
-    <section class="link">
-      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
-    </section>
-    <section class="link">
-      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
-    </section>
-    <section class="selected">
-      <%= link_to('All Songs', songs_path) %>
-    </section>
-    <section class="link">
-      Español
-    </section>
-  </section>
-  <h1>Cantando Inglés</h1>
   <h2>Songs</h2>
   <section class="copyright">
     Downloads are available for free to use in the Cantando Inglés Android application. If you're downloading for other uses, see license information for restrictions. The artists have provided a license for each song, see 'Original License'. The 'New Work' is the original song plus the translations; its license is under 'New Work License'.
