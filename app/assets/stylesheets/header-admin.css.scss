@@ -19,10 +19,6 @@
     }
   }
 
-  .menu-flex-container-sm {
-    display:none;
-  } 
-
   .link {
     flex-basis:85px;
     flex-grow:1;
@@ -39,9 +35,6 @@
   
   @media only screen and (min-width:400px) {
     .menu-flex-container-xs {
-      display:none;
-    }
-    .menu-flex-container-sm {
       display: flex;
       width: 100%;
       max-width:800px;
