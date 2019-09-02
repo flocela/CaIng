@@ -1,0 +1,58 @@
+.header-admin {
+
+  font-family: 'Josefin Sans', Arial;
+  .menu-flex-container-xs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content:space-between;
+    padding-bottom:15px;
+  }
+  
+  .bot-menu {
+    width:66%;
+    justify-content:center;
+    .link {
+      //flex-basis:120px;
+    }
+  }
+
+  .menu-flex-container-sm {
+    display:none;
+  } 
+
+  .link {
+    flex-basis:85px;
+    flex-grow:1;
+    font-size:0.875rem;
+    text-align:center;
+    color:#38686c;
+    a {
+      color:#38686c;
+      //color:#aa2a3f;
+      //color:#3e8d78;
+      text-decoration:none;
+    }
+  }
+  
+  @media only screen and (min-width:400px) {
+    .menu-flex-container-xs {
+      display:none;
+    }
+    .menu-flex-container-sm {
+      display: flex;
+      width: 100%;
+      max-width:800px;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: center;
+      padding:20px 0px 0px 0px;
+      justify-content:space-between;
+    }
+  }
+
+}
+
+
