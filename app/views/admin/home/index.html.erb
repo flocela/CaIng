@@ -1,53 +1,44 @@
-<section class=home-wrapper>
-  <section class="menu-flex-container-xs">
-    <section class="link">
-      <%= link_to('Home', home_path) %>
-    </section>
-    <section class="link">
-      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
-    </section>
-    <section class="selected">
-      <%= link_to('All Songs', songs_path) %>
-    </section>
+<section class=admin-home-wrapper>
+  <%= render 'header_admin' %>
+  <h1>Cantando Inglés</1>
+  <section class="admin-links-column">
+    <% if admin_signed_in? %>
+      <section class="admin-link">
+	<%= link_to('Admin-Songs', admin_songs_path) %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Delete Registration', admin_registration_path, method: :delete %>
+      </section>
+    <% else %>
+      <section class="admin-link">
+	<%= link_to 'Sign In', new_admin_session_path %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Register', new_admin_registration_path%>
+      </section>
+    <% end %>
   </section>
-  <section class="menu-flex-container-xs">
-    <section class="link">
-      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
-    </section>
-    <section class="link">
-      Españo
-    </section>
-  </section>
-  <section class="menu-flex-container-sm">
-    <section class="link">
-      <%= link_to('Home', home_path) %>
-    </section>
-    <section class="link">
-      <%= link_to('Play Store', "https://play.google.com/store/search?q=cantando%20ingles") %>
-    </section>
-    <section class="link">
-      <%= link_to('Apps by Flo', "http://appsbyflo.com") %>
-    </section>
-    <section class="selected">
-      <%= link_to('All Songs', songs_path) %>
-    </section>
-    <section class="link">
-      Español
-    </section>
-  </section>
-  <h1>Cantando Inglés</h1>
   <section class="admin-links-flex-container">
-    <section class="admin-link">
-      <%= link_to('See All Songs', admin_songs_path) %>
-    </section>
-    <section class="admin-link">
-      <%= link_to 'Sign In', new_admin_session_path %>
-    </section>
-    <section class="admin-link">
-      <%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
-    </section>
-    <section class="admin-link">
-      <%= link_to 'Delete Registration', admin_registration_path, method: :delete %>
-    </section>
+    <% if admin_signed_in? %>
+      <section class="admin-link">
+	<%= link_to('Admin-Songs', admin_songs_path) %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Delete Registration', admin_registration_path, method: :delete %>
+      </section>
+    <% else %>
+      <section class="admin-link">
+	<%= link_to 'Register', new_admin_registration_path %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Sign In', new_admin_session_path %>
+      </section>
+    <% end %>
   </section>
 </section>

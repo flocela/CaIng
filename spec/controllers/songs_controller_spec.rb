@@ -19,7 +19,7 @@ RSpec.describe SongsController do
   
   it 'does not download more than 500 songs in a month' do
     create("download_count", song_id:1, month: Time.parse("2019-07-01"), month_total:400)
-    create("download_count", song_id:1, month: Time.parse("2019-08-01"), month_total:500)
+    create("download_count", song_id:1, month: Time.parse("2019-09-01"), month_total:500)
     create("song", id:2, filename: 'act_cool_loveshadow')
     expect_any_instance_of(SongsController).to receive(:send_file).with('app/assets/songs/act_cool_loveshadow.zip', :filename => 'act_cool_loveshadow.zip', :url_based_filename => false, :type => 'application/zip').and_call_original
     get :get_zip, params: {id:2}
