@@ -1,122 +1,162 @@
 <section class=admin-song-new-wrapper>
   <h1>Cantando Inglés</h1> 
   <%= render 'header_admin_songs' %>
-    <h2>Edit Song</h2>
-    <%= form_for [:admin, @song] do |f| %>
-      <section class="song-info-flex-container">
-	<section class="song-info">
-	  <label>
-	    <section class=description>
-	      New Work Title:
-	    </section>
-	    <section class=input>
-	      <%= f.text_field(:new_work_title, size:"75") %>
-	    </section>
-	  </label>
-	</section>
-	<section class="song-info">
-	  <label>
-	    <section class=description>
-	      Song Type:
-	    </section>
-	    <section class=input>
-	      <%= f.text_field(:song_type, size:"10") %>
-	    </section>
-	  </label>
-	</section>
-	<section class="song-info">
-	  <label>
-	    <section class=description>
-	      Original Title in English:
-	    </section>
-	    <section class=input>
-	      <%= f.text_field(:orig_english_title, size:"75") %>
-	    </section>
-	  </label>
-	</section>
-	<section class="song-info">
-	  <label>
-	    <section class=description>
-	      Original Artist:
-	    </section>
-	    <section class=input>
-	      <%= f.text_field(:orig_artist, size:"75") %>
-	    </section>
-	   </label>
-	 </section>
-	 <section class="song-info">
-	   <label>
-	     <section class=description>
-	       Originally Downloaded At Name:
-	     </section>
-	     <section class=input>
-	       <%= f.text_field(:orig_downloaded_at_name, size:"75") %>
-	     </section>
-	   </label>
-	 </section>
-	 <section class="song-info">
-	   <label>
-	     <section class=description>
-	       Originally Downloaded At Link:
-	     </section>
-	     <section class=input>
-	       <%= f.text_field(:orig_downloaded_at_link, size:"75") %>
-	     </section>
-	   </label>
-	 </section>
-	 <section class="song-info">
-	   <label>
-	     <section class=description>
-	       Original License Name:
-	     </section>
-	     <section class=input>
-	       <%= f.text_field(:orig_license_name, size:"75") %>
-	     </section>
-	   </label>
-	 </section>
-	 <section class="song-info">
-	   <label>
-	     <section class=description>
-	       Original License Link:
-	     </section>
-	     <section class=input>
-	       <%= f.text_field(:orig_license_link, size:"75") %>
-	     </section>
-	   </label>
-	 </section>
-	 <section class="song-info">
-	   <label>
-	     <section class=description>
-	       New License Name:
-	     </section>
-	     <section class=input>
-	       <%= f.text_field(:name_of_new_work_license, size:"75") %>
-	     </section>
-	   </label>
-	 </section>
-	 <section class="song-info">
-	   <label>
-	     <section class=description>
-	       New License Link:
-	     </section>
-	     <section class=input>
-	       <%= f.text_field(:link_to_new_work_license, size:"75") %>
-	     </section>
-	   </label>
-	 </section>
-	 <section class="song-info">
-	   <label>
-	     <section class=description>
-	       Filename:
-	     </section>
-	     <section class=input>
-	       <%= f.text_field(:filename, size:"75") %>
-	     </section>
-	   </label>
-	 </section>
+  <h2>Edit Song</h2>
+  <%= form_for [:admin, @song] do |f| %>
+    <section class="song-info-flex-container">
+      <section class="song-info">
+	<label>
+	  <section class=description>
+	    New Work Title:
+	  </section>
+	  <section class=input>
+	    <%= f.text_field(:new_work_title, size:"75") %>
+	  </section>
+	</label>
+      </section>
+      <section class="song-info">
+	<label>
+	  <section class=description>
+	    Original Title in English:
+	  </section>
+	  <section class=input>
+	    <%= f.text_field(:orig_english_title, size:"75") %>
+	  </section>
+	</label>
+      </section>
+      <section class="song-info">
+	<label>
+	  <section class=description>
+	    Original Artist:
+	  </section>
+	  <section class=input>
+	    <%= f.text_field(:orig_artist, size:"75") %>
+	  </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Song Type:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:song_type, size:"10") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Originally Downloaded At Name:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_downloaded_at_name, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Originally Downloaded At Link:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_downloaded_at_link, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Originally Published Date:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_pub_date, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original Lyrics Dated:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_lyrics_date, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original Lyrics Date Link Name:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_lyrics_date_link_name, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original Lyrics Date Link:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_lyrics_date_link, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original License Name:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_license_name, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original License Link:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_license_link, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     New License Name:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:name_of_new_work_license, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     New License Link:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:link_to_new_work_license, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Filename:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:filename, size:"75") %>
+	   </section>
+	 </label>
+       </section>
        <section class=create-button>
 	 <%= submit_tag "Edit" %>  
-      </section>
+       </section>
     </section>
   <% end %>
 </section>
