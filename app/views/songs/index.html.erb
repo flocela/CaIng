@@ -47,10 +47,10 @@
 	    Reference to Original Lyrics: <%= link_to song.orig_lyrics_date_link_name, song.orig_lyrics_date_link %>
 	  </section>
 	  <section class=song_info>
-	    Original License: <%= song.orig_lyrics_date_link_name %>
+	    Original License: <%= link_to song.orig_lyrics_date_link_name, song.orig_lyrics_date_link %>
 	  </section>
 	  <section class=song_info>
-	    New Work License: <%= song.orig_license_name %>
+	    New Work License: <%= link_to song.name_of_new_work_license, song.link_to_new_work_license %>
 	  </section>
 	  <section class=song_info>
 	    Changes Made: <%= song.orig_english_changes_made %>

@@ -17,16 +17,6 @@
       <section class="song-info">
 	<label>
 	  <section class=description>
-	    Song Type:
-	  </section>
-	  <section class=input>
-	    <%= f.text_field(:song_type, size:"10") %>
-	  </section>
-	</label>
-      </section>
-      <section class="song-info">
-	<label>
-	  <section class=description>
 	    Original Title in English:
 	  </section>
 	  <section class=input>
@@ -45,6 +35,16 @@
 	 </label>
        </section>
        <section class="song-info">
+         <label>
+	   <section class=description>
+	     Song Type:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:song_type, size:"10") %>
+	   </section>
+         </label>
+       </section>
+       <section class="song-info">
 	 <label>
 	   <section class=description>
 	     Originally Downloaded At Name:
@@ -61,6 +61,46 @@
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:orig_downloaded_at_link, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Originally Published Date:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_pub_date, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original Lyrics Dated:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_lyrics_date, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original Lyrics Date Link Name:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_lyrics_date_link_name, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Original Lyrics Date Link:
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_lyrics_date_link, size:"75") %>
 	   </section>
 	 </label>
        </section>
