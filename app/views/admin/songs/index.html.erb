@@ -1,22 +1,6 @@
-<section class=admin-song-wrapper>
-  <section class="menu-flex-container">
-    <section class=link>
-      <%= link_to('Home', home_path) %>
-    </section>
-    <section class=link>
-      <%= link_to('Admin Home', admin_home_path) %>
-    </section>
-    <section class=selected>
-      <%= link_to('All Songs', admin_songs_path) %> 
-    </section>
-    <section class=link>
-      <%= link_to 'New Song', new_admin_song_path %>
-    </section>
-    <section class=link>
-      <%= link_to 'Sign-Out', destroy_admin_session_path, method: :delete %>
-    </section>
-  </section> 
+<section class=admin-songs-wrapper>
   <h1>Cantando Inglés</h1> 
+  <%= render 'header_admin_songs' %>
   <h2>Songs</h2>
   <section class="copyright">
     Downloads are available for free to use in the Cantando Inglés Android application. If you're downloading for other uses, see license information for restrictions. The artists have provided a license for each song, see 'Original License'. The 'New Work' is the original song plus the translations; its license is under 'New Work License'.
