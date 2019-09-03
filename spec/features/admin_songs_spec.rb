@@ -12,7 +12,9 @@ RSpec.describe 'Features Admin Songs' do
     
     it 'links to New Song Page' do
       visit('/admin/songs')
-      click_link('New Song')
+      within '.bot-menu' do
+        click_link('New Song')
+      end
       expect(current_path).to have_content('/admin/songs/new')  
     end 
  

@@ -3,45 +3,15 @@
   font-family: 'Josefin Sans', Arial;
   padding-top:20px;
   padding-bottom:20px;
-
-  .menu-flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width:700px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    padding:20px 0px 10px 0px;
-    padding-top:20px;
-    padding-bottom:10px;
-    justify-content:space-between;
-  }
-  
-  .link {
-    flex-basis:110px;
-    font-size:0.875rem;
-    //background-color:#aaa;
-    text-align:center;
-    color:#be3d4f;
-  }  
-
-  .selected {
-    flex-basis:110px;
-    color:#cdaeb3;
-    font-size:0.875rem;
-    text-align:center;
-  }  
   
   h1 {
     font-size:.875rem;
     letter-spacing:1px;
     font-weight:600;
-    font-family: 'Josefin Sans', Arial;
     text-align:center;
-    color:#1c5e6a;
+    color:#3d1c15;
     margin:0;
-    padding:45px 0 35px 0;
+    padding:35px 0 35px 0;
   }
 
   h2 {
@@ -51,8 +21,8 @@
     text-align:center;
     margin-top:0px;
     margin-bottom:14px;
-    color:#3c2b21;
-    padding: 20px 0 20px 0;
+    color:#3d1c15;
+    padding: 45px 0 40px 0;
   }
   
   .song-info-flex-container {
@@ -65,7 +35,7 @@
   .song-info {
     flex-basis:700px;
     text-align:center;
-    margin:0;
+    margin:5px 0 0 0;
     font-size:0.875rem;
   }
 
