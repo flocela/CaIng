@@ -19,17 +19,27 @@
 	  <section class="song_info orig-artist">
 	    Original Artist:  <%= song.orig_artist %>
 	  </section>
+          <% if song.orig_english_uses_sample_from_1? %>
+	    <section class=song_info>
+	      Orig song uses samples from: <%= song.orig_english_uses_sample_from_1%>
+	    </section>
+	    <section class=song_info>
+	      Sample at: <%= link_to song.orig_uses_sample_from_link_name_1, song.orig_uses_sample_from_link_1 %>
+          <% end %>  
 	  <section class=song_info>
 	    Difficulty of Song: <%= song.song_type %>
 	  </section>
 	  <section class=song_info>
-	    Original Downloaded at:  <%= song.orig_downloaded_at_name %>
+	    Originally Downloaded at:  <%= link_to song.orig_downloaded_at_name, song.orig_downloaded_at_link  %>
 	  </section>
           <section class=song_info>
             Original Published: <%= song.orig_pub_date %>
 	  </section>
 	  <section class=song_info>
-	    Original Song Lyrics Dated: <%= song.orig_lyrics_date %>
+	    Original Lyrics Dated: <%= song.orig_lyrics_date %>
+	  </section>
+	  <section class=song_info>
+	    Reference to Original Lyrics: <%= link_to song.orig_lyrics_date_link_name, song.orig_lyrics_date_link %>
 	  </section>
 	  <section class=song_info>
 	    Original License: <%= song.orig_lyrics_date_link_name %>
@@ -40,8 +50,11 @@
 	  <section class=song_info>
 	    Changes Made: <%= song.orig_english_changes_made %>
 	  </section>
+	  <section class=song_info>
+	    <%= link_to 'Attribution Link', song.orig_attribution_link %>
+	  </section>
 	  <section class="song_info filename">
-	    Filename: <%= song.filename %>
+	    Filename: <%= song.filename %>.zip
 	  </section>
 	  <section class=song_info>
 	    File size: <%= song.zip_size %>
