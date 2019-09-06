@@ -45,7 +45,6 @@ class SongsController < ApplicationController
       secret_access_key = Rails.application.credentials.development[:aws][:secret_access_key]
       s3 = Aws::S3::Resource.new(region: 'us-east-1', access_key_id: access_key_id, secret_access_key: secret_access_key)
       song = Song.find(params[:id])
-      #filename = song.filename << ".zip"
       filename = Song.find_by_id(params[:id]).filename << ".zip"
       s3_file_path ="m4a/#{filename}"
       object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
