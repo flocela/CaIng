@@ -47,7 +47,25 @@ RSpec.describe Admin::SongsController do
       expect(Song.count).to eq(2)
       expect { delete :destroy, params: { id: song1.id } }.to change(Song, :count).by(-1)
     end
-  
+
+    it 'shows flash notice if params id is not an integer when calling edit action' do
+      create("song", id:19, filename: 'act_cool_loveshadow')
+      get :edit, params: {"id":"19a"}
+      expect(flash[:notice]).to match('that is not an integer') 
+    end  
+
+    it 'Song.find is called if :id is an integer' do
+      create("song", id:19, filename: 'act_cool_loveshadow')
+      expect(Song).to receive(:find_by_id).and_call_original
+      get :edit, params: {id:19}
+    end
+    
+    it 'Song.find is not called if :id is not an integer' do
+      create("song", id:19, filename: 'act_cool_loveshadow')
+      expect(Song).to_not receive(:find_by_id).and_call_original
+      get :edit, params: {"id":"19a"}
+    end
+
   end
   
   describe 'Admin other than flocela signs in and ' do

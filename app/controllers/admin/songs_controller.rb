@@ -1,5 +1,6 @@
 class Admin::SongsController < ApplicationController
   before_action :authenticate_admin!
+
   def index
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
@@ -8,6 +9,7 @@ class Admin::SongsController < ApplicationController
      #redirect_to :back, :alert => "Access denied."
     end
   end
+
   def new
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
@@ -17,6 +19,7 @@ class Admin::SongsController < ApplicationController
       redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
     end
   end
+
   def create
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       song = Song.new(song_params)
@@ -26,13 +29,24 @@ class Admin::SongsController < ApplicationController
       redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
     end
   end
+
   def edit
+    puts ("id: " + params[:id])
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
-      @song = Song.find(params[:id])
+      if (!params[:id].scan(/\D/).empty?)
+	puts "hello"
+	flash[:notice] = 'that is not an integer'
+	redirect_to(admin_songs_path)
+      else 
+        puts "first else"
+        @song = Song.find_by_id(params[:id])
+      end 
     else
+      puts "second else"
       redirect_back(fallback_location: admin_session_path, alert: "Access denied.")
     end
   end
+
   def update
    if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       song = Song.find(params[:id])
@@ -54,8 +68,10 @@ class Admin::SongsController < ApplicationController
       redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
     end
   end  
+
   def song_params
     params.require(:song).permit(:new_work_title, :song_type, :orig_english_title, :orig_artist, :orig_downloaded_at_name, :orig_downloaded_at_link, :orig_license_name, :orig_license_link, :name_of_new_work_license, :link_to_new_work_license, :filename)
   end
+
 end
 
