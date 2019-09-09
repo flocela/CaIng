@@ -35,19 +35,19 @@
 	 </label>
        </section>
        <section class="song-info">
-	 <label>
+         <label>
 	   <section class=description>
 	     Song Type:
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:song_type, size:"10") %>
 	   </section>
-	 </label>
+         </label>
        </section>
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     Originally Downloaded At Name:
+	     Originally Downloaded At (name):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:orig_downloaded_at_name, size:"75") %>
@@ -57,7 +57,7 @@
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     Originally Downloaded At Link:
+	     Originally Downloaded At (link):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:orig_downloaded_at_link, size:"75") %>
@@ -87,7 +87,7 @@
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     Original Lyrics Date Link Name:
+	     Original Lyrics Date (link name):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:orig_lyrics_date_link_name, size:"75") %>
@@ -97,7 +97,7 @@
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     Original Lyrics Date Link:
+	     Original Lyrics Date (link):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:orig_lyrics_date_link, size:"75") %>
@@ -107,7 +107,7 @@
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     Original License Name:
+	     Original License (name):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:orig_license_name, size:"75") %>
@@ -117,7 +117,7 @@
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     Original License Link:
+	     Original License (link):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:orig_license_link, size:"75") %>
@@ -127,7 +127,7 @@
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     New License Name:
+	     New License (name):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:name_of_new_work_license, size:"75") %>
@@ -137,7 +137,7 @@
        <section class="song-info">
 	 <label>
 	   <section class=description>
-	     New License Link:
+	     New License (link):
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:link_to_new_work_license, size:"75") %>
@@ -151,6 +151,76 @@
 	   </section>
 	   <section class=input>
 	     <%= f.text_field(:filename, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Changes Made To Orig (english):
+	   </section>
+	   <section class=input>
+	     <%= f.text_area(:orig_english_changes_made, cols:"75", rows:"8") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Changes Made To Orig (spanish):
+	   </section>
+	   <section class=input>
+	     <%= f.text_area(:orig_spanish_changes_made, cols:"75", rows:"8") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Attribution Link: 
+	   </section>
+	   <section class=input>
+	     <%= f.text_area(:orig_attribution_link, cols:"75", rows:"2") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Uses Samples From (english):
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_spanish_uses_sample_from_1, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Uses Samples From (spanish):
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_english_uses_sample_from_1, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Uses Samples From (link name):
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_uses_sample_from_link_name_1, size:"75") %>
+	   </section>
+	 </label>
+       </section>
+       <section class="song-info">
+	 <label>
+	   <section class=description>
+	     Uses Samples From (link):
+	   </section>
+	   <section class=input>
+	     <%= f.text_field(:orig_uses_sample_from_link_1, size:"75") %>
 	   </section>
 	 </label>
        </section>
