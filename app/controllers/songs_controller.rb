@@ -53,7 +53,7 @@ class SongsController < ApplicationController
       object.get(response_target: "#{Rails.root}/app/assets/songs/#{filename}")
       File.chmod(0666, "#{Rails.root}/app/assets/songs/#{filename}")
       send_file "app/assets/songs/#{filename}", :filename => "#{filename}", :url_based_filename => false, :type=>"application/zip"
-      downloadCount = DownloadCount.find_by(song_id: 19, month: Date.current.beginning_of_month)
+      downloadCount = DownloadCount.find_by(song_id: song.id, month: Date.current.beginning_of_month)
       if (downloadCount)
 	downloadCount.month_total = downloadCount.month_total + 1
 	downloadCount.save
