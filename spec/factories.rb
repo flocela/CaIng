@@ -22,6 +22,9 @@ FactoryBot.define do
     orig_license_link {"orig license link"}
     name_of_new_work_license {"name of new work license"}
     link_to_new_work_license {"link of new work license"}
+    orig_english_changes_made {"changes made in english"}
+    orig_spanish_changes_made {"changes made in spanish"}
     filename {"filename"}
+    zip_size {5}
   end
 end
