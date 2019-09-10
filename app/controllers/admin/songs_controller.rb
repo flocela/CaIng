@@ -31,27 +31,28 @@ class Admin::SongsController < ApplicationController
   end
 
   def edit
-    puts ("id: " + params[:id])
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       if (!params[:id].scan(/\D/).empty?)
-	puts "hello"
 	flash[:notice] = 'that is not an integer'
 	redirect_to(admin_songs_path)
       else 
-        puts "first else"
         @song = Song.find_by_id(params[:id])
       end 
     else
-      puts "second else"
       redirect_back(fallback_location: admin_session_path, alert: "Access denied.")
     end
   end
 
   def update
    if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
-      song = Song.find(params[:id])
-      song.update!(song_params)
-      redirect_to(admin_songs_path)
+      if (!params[:id].scan(/\D/).empty?)
+	flash[:notice] = 'that is not an integer'
+	redirect_to(admin_songs_path)
+      else 
+	song = Song.find(params[:id])
+	song.update!(song_params)
+	redirect_to(admin_songs_path)
+      end
    else
      redirect_back(fallback_location: admin_session_path, alert: "Access denied.")
    end
@@ -60,10 +61,14 @@ class Admin::SongsController < ApplicationController
   def destroy
     if current_admin && current_admin.email == Rails.application.credentials.development[:admin_email]
       @songs = Song.all
-      song = Song.find(params[:id])
-      song.destroy
-      puts ("Not destroyed.")
-      redirect_to admin_songs_path
+      if (!params[:id].scan(/\D/).empty?)
+	flash[:notice] = 'that is not an integer'
+	redirect_to(admin_songs_path)
+      else 
+	song = Song.find(params[:id])
+	song.destroy
+	redirect_to admin_songs_path
+      end
     else
       redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
     end
