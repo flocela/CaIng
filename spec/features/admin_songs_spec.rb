@@ -1,5 +1,13 @@
 require 'rails_helper'
-RSpec.describe 'Features Admin Songs' do
+RSpec.describe 'In Admin Songs Page' do
+  describe 'not signed in and then ' do
+    it 'if admin is not signed in then can not see admin/songs' do
+      expect(Admin.count).to equal(0)
+      visit('/admin/songs')
+      expect(page).to have_content('You need to sign in or sign up')
+    end
+  end
+  
   describe 'signing up as flocela and then ' do
     before(:each) do
       visit('/admins/sign_up')
@@ -10,62 +18,51 @@ RSpec.describe 'Features Admin Songs' do
       expect(current_path).to eql('/')
     end
     
-    it 'links to New Song Page' do
+    it 'shows links to New Song Page' do
       visit('/admin/songs')
       within '.bot-menu' do
         click_link('New Song')
       end
       expect(current_path).to have_content('/admin/songs/new')  
     end 
- 
-    it 'creates a new song' do
-      visit('/admin/songs/new')
-      fill_in('New Work Title', with: 'New Work Title 3')
-      fill_in('Song Type', with: '3')
-      fill_in('Original Title in E', with: 'Orig Eng Title 3')
-      fill_in('Original Artist', with: 'Orig Artist 3')
-      fill_in('Originally Downloaded At (name)', with: 'Orig Downloaded At Name 3')
-      fill_in('Originally Downloaded At (link)', with: 'Orig Downloaded At Link 3')
-      fill_in('Original License (name)', with: 'Orig License Name 3')
-      fill_in('Original License (link)', with: 'Orig License Link 3')
-      fill_in('New License (name)', with: 'Name of New Work License 3') 
-      fill_in('New License (link)', with: 'Link to New Work License 3')
-      fill_in('Changes Made To Orig (english)', with: 'Changes Made To Orig english 3')
-      fill_in('Changes Made To Orig (spanish)', with: 'Changes Made To Orig spanish 3')
-      fill_in('Filename', with: 'Filename 3')
-      fill_in('File Size', with: '5')
-      click_button('Create')
-      expect(current_path).to have_content('/admin/songs')
-      expect(page).to have_content('New Work Title 3')
-    end
 
-    it 'edits a song' do
-      visit('/admin/songs/new')
-      fill_in('New Work Title', with: 'New Work Title 3')
-      fill_in('Song Type', with: '3')
-      fill_in('Original Title in E', with: 'Orig Eng Title 3')
-      fill_in('Original Artist', with: 'Orig Artist 3')
-      fill_in('Originally Downloaded At (name)', with: 'Orig Downloaded At Name 3')
-      fill_in('Originally Downloaded At (link)', with: 'Orig Downloaded At Link 3')
-      fill_in('Original License (name)', with: 'Orig License Name 3')
-      fill_in('Original License (link)', with: 'Orig License Link 3')
-      fill_in('New License (name)', with: 'Name of New Work License 3') 
-      fill_in('New License (link)', with: 'Link to New Work License 3')
-      fill_in('Filename', with: 'Filename 3')
-      fill_in('Changes Made To Orig (english)', with: 'changes english')
-      fill_in('Changes Made To Orig (spanish)', with: 'changes spanish')
-      fill_in('File Size', with: '5')
-      click_button('Create')
-      expect(current_path).to have_content('/admin/songs')
-      expect(page).to have_content('New Work Title 3')
-      click_link('Edit')
-      expect(page).to have_content('Edit Song')
-      expect(find_field('New Work Title').value).to eq 'New Work Title 3'
-      fill_in('New Work Title', with: 'New Work Title 4')
-      click_button('Edit')
-      expect(current_path).to have_content('/admin/songs')
-      expect(page).to have_content('New Work Title 4')
-    end
+    describe 'fills in song input in songs/new' do
+      before(:each) do
+	visit('/admin/songs/new')
+	fill_in('New Work Title', with: 'New Work Title 3')
+	fill_in('Song Type', with: '3')
+	fill_in('Original Title in E', with: 'Orig Eng Title 3')
+	fill_in('Original Artist', with: 'Orig Artist 3')
+	fill_in('Originally Downloaded At (name)', with: 'Orig Downloaded At Name 3')
+	fill_in('Originally Downloaded At (link)', with: 'Orig Downloaded At Link 3')
+	fill_in('Original License (name)', with: 'Orig License Name 3')
+	fill_in('Original License (link)', with: 'Orig License Link 3')
+	fill_in('New License (name)', with: 'Name of New Work License 3') 
+	fill_in('New License (link)', with: 'Link to New Work License 3')
+	fill_in('Changes Made To Orig (english)', with: 'Changes Made To Orig english 3')
+	fill_in('Changes Made To Orig (spanish)', with: 'Changes Made To Orig spanish 3')
+	fill_in('Filename', with: 'Filename 3')
+	fill_in('File Size', with: '5')
+      end 
+      it 'creates a new song' do
+	click_button('Create')
+	expect(current_path).to have_content('/admin/songs')
+	expect(page).to have_content('New Work Title 3')
+      end
+
+      it 'creates song and edits a song' do
+	click_button('Create')
+	expect(current_path).to have_content('/admin/songs')
+	expect(page).to have_content('New Work Title 3')
+	click_link('Edit')
+	expect(page).to have_content('Edit Song')
+	expect(find_field('New Work Title').value).to eq 'New Work Title 3'
+	fill_in('New Work Title', with: 'New Work Title 4')
+	click_button('Edit')
+	expect(current_path).to have_content('/admin/songs')
+	expect(page).to have_content('New Work Title 4')
+      end
+    end 
  
   end
 

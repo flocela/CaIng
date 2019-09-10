@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'Admin Home Links To Songs' do
+RSpec.describe 'Admin Home' do
   
   it 'will not register admin that is not flocela@gmail.com' do
     visit('/admins/sign_up')
@@ -25,11 +25,6 @@ RSpec.describe 'Admin Home Links To Songs' do
     expect(page).to_not have_link('Admin-Songs')
   end
   
-  it 'if admin is not signed in then can not see admin/songs' do
-    expect(Admin.count).to equal(0)
-    visit('/admin/songs')
-    expect(page).to have_content('You need to sign in or sign up')
-  end
  
   it 'if admin is not signed in then shows Sign In' do
     expect(Admin.count).to equal(0)
