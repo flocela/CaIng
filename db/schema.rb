@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_202731) do
+ActiveRecord::Schema.define(version: 2019_09_10_005404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 2019_07_31_202731) do
     t.string "orig_spanish_uses_sample_from_1"
     t.string "name_of_new_work_license", null: false
     t.string "link_to_new_work_license", null: false
-    t.string "orig_english_changes_made"
-    t.string "orig_spanish_changes_made"
+    t.string "orig_english_changes_made", null: false
+    t.string "orig_spanish_changes_made", null: false
     t.string "filename", null: false
-    t.string "zip_size"
+    t.string "zip_size", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["new_work_title"], name: "index_songs_on_new_work_title", unique: true
