@@ -32,7 +32,7 @@
 	      Sample at: <%= link_to song.orig_uses_sample_from_link_name_1, song.orig_uses_sample_from_link_1 %>
           <% end %>  
 	  <section class=song_info>
-	    Difficulty of Song: <%= song.song_type %>
+	    Song Difficulty: <%= song.song_type %>
 	  </section>
 	  <section class=song_info>
 	    Originally Downloaded at:  <%= link_to song.orig_downloaded_at_name, song.orig_downloaded_at_link  %>
@@ -55,9 +55,11 @@
 	  <section class=song_info>
 	    Changes Made: <%= song.orig_english_changes_made %>
 	  </section>
-	  <section class=song_info>
-	    <%= link_to 'Attribution Link', song.orig_attribution_link %>
-	  </section>
+          <% if song.orig_attribution_link"
+	    <section class=song_info>
+	      <%= link_to 'Attribution Link', song.orig_attribution_link %>
+	    </section>
+          <% end %>
 	  <section class="song_info filename">
 	    Filename: <%= song.filename %>.zip
 	  </section>
