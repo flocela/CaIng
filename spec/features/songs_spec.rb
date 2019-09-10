@@ -21,5 +21,27 @@ RSpec.describe 'Songs features' do
         File.delete('app/assets/songs/amazing_grace_rich_tuttle.zip') if File.exists?('app/assets/songs/amazing_grace_rich_tuttle.zip')
       end
     end
+    
+    it 'does not show number of downloads when there are no downloads' do
+      create("song", new_work_title: 'No Downloads Song')
+      visit('/songs')
+      expect(page).to have_content('No Downloads Song')
+      expect(page).to_not have_content('Downloads this month') 
+    end
+    
+    it 'shows number of downloads when there are downloads' do
+      create("song", id: 10, new_work_title: 'Title 10')
+      create("song", id: 20, new_work_title: 'Title 20')
+      create("download_count", song_id: 10, 
+                                       month: Date.current.beginning_of_month, 
+                                       month_total: 10)
+      create("download_count", song_id: 20, 
+                                       month: Date.current.beginning_of_month, 
+                                       month_total: 20)
+      visit('/songs')
+      expect(page).to have_content('Downloads this month: 10')
+      expect(page).to have_content('Downloads this month: 20') 
+    end
+ 
   end
 end

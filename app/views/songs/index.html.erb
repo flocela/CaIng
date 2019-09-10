@@ -55,7 +55,7 @@
 	  <section class=song_info>
 	    Changes Made: <%= song.orig_english_changes_made %>
 	  </section>
-          <% if song.orig_attribution_link"
+          <% if song.orig_attribution_link? %>
 	    <section class=song_info>
 	      <%= link_to 'Attribution Link', song.orig_attribution_link %>
 	    </section>
@@ -66,8 +66,14 @@
 	  <section class=song_info>
 	    File size: <%= song.zip_size %>
 	  </section>
+          <% if monthly_downloads_exist(song.id) %>
+	    <section class = song_info>
+	      Downloads this month: <%= monthly_download_count(song.id) %>
+	    </section> 
+          <% end %>
 	</section>
       </section> 
     <% end %>
   </section>
 </section>
+

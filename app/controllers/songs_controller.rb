@@ -1,5 +1,7 @@
 require 'aws-sdk'
 class SongsController < ApplicationController
+  helper_method :monthly_downloads_exist
+  helper_method :monthly_download_count
   def index
     @songs = Song.order(:song_type)
     respond_to do |format|
@@ -62,5 +64,19 @@ class SongsController < ApplicationController
       File.delete('app/assets/songs/${filename}') if File.exists?('app/assets/songs/#{filename}')
     end
   end
+
+  private
+    
+    def monthly_downloads_exist(song_id_x)
+      DownloadCount.find_by(song_id: song_id_x)
+    end
+ 
+    def monthly_download_count(song_id_x) 
+      downloadCount = DownloadCount.find_by(song_id: song_id_x)
+      if (downloadCount)
+        downloadCount.month_total
+      else
+      end
+    end    
 
 end
