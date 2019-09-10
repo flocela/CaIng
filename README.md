@@ -9,6 +9,7 @@ This is the repository for the Cantando Ingles rails website.
                button. Only an admin named flocela@gmail.com can
                add, delete, or change a song.
 
+has a .gitignore file in this directory CaIngWebsites/CaIng/.gitignore
 
 
 
