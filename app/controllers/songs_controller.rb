@@ -1,7 +1,7 @@
 require 'aws-sdk'
 class SongsController < ApplicationController
   def index
-    @songs = Song.all
+    @songs = Song.order(:song_type)
     respond_to do |format|
       format.html
       format.xml {render :xml =>
