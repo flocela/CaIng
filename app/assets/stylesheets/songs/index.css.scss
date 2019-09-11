@@ -1,5 +1,4 @@
 .songs-wrapper {
-  font-family: 'Josefin Sans', Arial;
   padding: 20px 5px 20px 5px;
 
   .link-all-songs {
@@ -20,7 +19,6 @@
     font-size:0.875rem;
     letter-spacing:1px;
     font-weight:400;
-    font-family: 'Josefin Sans', Arial;
     text-align:center;
     padding-top:30px;
     padding-bottom:0px;
@@ -30,7 +28,7 @@
   h2 {
     font-size:4.0rem;
     letter-spacing:6px;
-    font-weight:400;
+    font-weight:300;
     text-align:center;
     margin-top:44px;
     margin-bottom:24px;
@@ -41,10 +39,9 @@
     color:#222;
     max-width: 670px;
     margin: 0 auto;
-    padding: 20px 20px 0px 20px;
+    padding: 20px 20px 5px 20px;
     font-weight:300;
     font-size:.875rem;
-    padding-bottom:5px;
     text-align:center;
   }
 
@@ -54,7 +51,7 @@
     width:100%;
     font-size:0.875rem;
   }
-  @media only screen and (min-width:476px) {
+  @media only screen and (min-width:482px) {
     .title-sm {
       display:block;
       h1 {
@@ -65,6 +62,17 @@
 
     .title-xs {
      display:none;
+    }
+
+    .copyright {
+      padding: 20px 35px 5px 35px;
+    }
+  
+  }
+  
+  @media only screen and (min-width:600px) {
+    .copyright {
+      padding: 20px 50px 5px 50px;
     }
   }
 

@@ -1,17 +1,20 @@
 .home-wrapper {
-  font-family: 'Josefin Sans', Arial;
   padding:20px 5px 20px 5px;
   
   .link-home {
-    a {
-      font-weight:700;
+    a:link {
+      color:#224b51; 
+    }
+    a:visited {
+      color:#224b51; 
     }
   }
 
   h1 {
     color:#3d1c15;
-    font-size:2.75rem;
-    font-weight:700;
+    font-size:3.0rem;
+    font-weight:300;
+    letter-spacing:2px;
     text-align:center;
     margin-top:0px;
     margin-bottom:0px;
@@ -55,34 +58,63 @@
     max-width:670px;
     text-align:center;
     padding: 0 20px 0 20px;
-    margin:0 auto 60px auto;
+    margin:0 auto 50px auto;
+    a {
+      color:#38686c;
+    }
+    a:link {
+      color:#38686c;
+    }
+    a:visited {
+      color:#38686c;
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
   }
   
   @media only screen and (min-width: 360px) {
     h1 {
-      font-size:3.0rem;
-      letter-spacing:4px;
-      font-weight:700;
+      font-size:3.25rem;
+      letter-spacing:2px;
       text-align:center;
       margin-top:0px;
       margin-bottom:0px;
-      padding:35px 20px 45px 20px;
+      padding:40px 20px 50px 20px;
     }
+    .introduction {
+      margin: 0 auto 50px auto;
+    }
+  }
+
+  @media only screen and (min-width:482px) {
+    h1 {
+      font-size:3.2rem;
+      padding:55px 20px 65px 20px;
+    }
+    .introduction {
+      padding:0 25px;
+    }
+    
   }
 
   @media only screen and (min-width: 520px) {
     h1 {
-      padding:45px 20px 55px 20px;
+      font-size:3.25rem;
+      padding:55px 20px 55px 20px;
     }
   }
       
   @media only screen and (min-width: 650px) {
     h1 {
       font-size:4.0rem;
-      font-weight:300;
     }
     .introduction {
       font-size:1.0rem;
+      padding:0 30px;
     }
   }
        
