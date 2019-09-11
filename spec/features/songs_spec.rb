@@ -42,6 +42,17 @@ RSpec.describe 'Songs features' do
       expect(page).to have_content('Downloads this month: 10')
       expect(page).to have_content('Downloads this month: 20') 
     end
+    
+    it 'shows total number of downloads from all songs for the one month' do
+      create("download_count", song_id: 10, 
+                                       month: Date.current.beginning_of_month, 
+                                       month_total: 10)
+      create("download_count", song_id: 20, 
+                                       month: Date.current.beginning_of_month, 
+                                       month_total: 20)
+      visit('/songs')
+      expect(page).to have_content('Total Downloads This Month: 30')
+    end
  
   end
 end

@@ -2,6 +2,7 @@ require 'aws-sdk'
 class SongsController < ApplicationController
   helper_method :monthly_downloads_exist
   helper_method :monthly_download_count
+  helper_method :total_downloads_this_month
   def index
     @songs = Song.order(:song_type)
     respond_to do |format|
@@ -67,16 +68,20 @@ class SongsController < ApplicationController
 
   private
     
-    def monthly_downloads_exist(song_id_x)
-      DownloadCount.find_by(song_id: song_id_x)
+  def monthly_downloads_exist(song_id_x)
+    DownloadCount.find_by(song_id: song_id_x)
+  end
+
+  def monthly_download_count(song_id_x) 
+    downloadCount = DownloadCount.find_by(song_id: song_id_x)
+    if (downloadCount)
+      downloadCount.month_total
+    else
     end
- 
-    def monthly_download_count(song_id_x) 
-      downloadCount = DownloadCount.find_by(song_id: song_id_x)
-      if (downloadCount)
-        downloadCount.month_total
-      else
-      end
-    end    
+  end    
+
+  def total_downloads_this_month
+    DownloadCount.where(:month => Date.current.beginning_of_month).sum(:month_total)  
+  end
 
 end
