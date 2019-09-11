@@ -3,22 +3,12 @@
   padding: 20px 5px 20px 5px;
 
   .link-all-songs {
-    a {
-      font-weight:700;
-    }
     a:link {
-     //color:#5553b0;
+     color:#224b51;
     }
     a:visited {
-      color:#38686c;
+     color:#224b51;
     }
-    a:hover {
-      color:#4eab89;
-    }
-    a:active {
-      color:#bbe0ad;
-    }
-    
   }
   
   .title-sm {
@@ -29,7 +19,7 @@
     color:#3d1c15;
     font-size:0.875rem;
     letter-spacing:1px;
-    font-weight:700;
+    font-weight:400;
     font-family: 'Josefin Sans', Arial;
     text-align:center;
     padding-top:30px;
@@ -38,20 +28,21 @@
   }
 
   h2 {
-    font-size:3.75rem;
+    font-size:4.0rem;
     letter-spacing:6px;
-    font-weight:700;
+    font-weight:400;
     text-align:center;
-    margin-top:40px;
+    margin-top:44px;
     margin-bottom:24px;
     color:#3d1c15;
   }
 
   .copyright {
+    color:#222;
     max-width: 670px;
     margin: 0 auto;
     padding: 20px 20px 0px 20px;
-    font-family: 'Josefin Sans', Arial;
+    font-weight:300;
     font-size:.875rem;
     padding-bottom:5px;
     text-align:center;
@@ -99,27 +90,46 @@
   }
 
   .song_info {
+    color:#222;
     font-size:.875rem;
     padding-bottom:5px;
     margin-left:auto;
     margin-right:auto;
     text-align:center;
+    font-weight:300;
+    a {
+      color:#38686c;
+      text-decoration:none;
+    }
+    a:link {
+      color:#38686c;
+    }
+    a:visited {
+      color:#38686c;
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
   }
 
   .song-title {
+    color:#143931;
     display:block;
-    font-size:1.5rem;
+    font-size:2.0rem;
     padding-bottom:5px;
   }
 
   .orig-title {
     color:#1c5e6a;
-    font-weight:700;
+    font-size:1.0rem;
   }
 
   .orig-artist {
     color:#1c5e6a;
-    font-weight:700;
+    font-size:1.0rem;
   }
 
   .filename {

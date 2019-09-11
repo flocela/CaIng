@@ -30,10 +30,21 @@
     text-align:center;
     color:#38686c;
     a {
+      font-weight:300;
       color:#38686c;
-      //color:#aa2a3f;
-      //color:#3e8d78;
       text-decoration:none;
+    }
+    a:link {
+      color:#38686c;
+    }
+    a:visited {
+      color:#38686c;
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
     }
   }
   
