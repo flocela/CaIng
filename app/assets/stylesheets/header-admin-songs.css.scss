@@ -27,14 +27,25 @@
     flex-grow:1;
     font-size:0.875rem;
     text-align:center;
-    color:#38686c;
     a {
       color:#38686c;
-      //color:#aa2a3f;
-      //color:#3e8d78;
+      text-align:center;
+    }
+    a:link {
+      color:#38686c;
       text-decoration:none;
     }
+    a:link {
+      color:#38686c;
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
   }
+
   
   @media only screen and (min-width:476px) {
     .menu-flex-container-xs {

@@ -82,6 +82,20 @@
     word-wrap: break-word;
   }
 
+  .admin-songs {
+    a:link {
+      color:#408f77; 
+    }
+    a:visited {
+      color:#408f77; 
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
+  }
   
 }
 

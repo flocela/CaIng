@@ -1,27 +1,26 @@
 .admin-home-wrapper {
-  font-family: 'Josefin Sans', Arial;
   padding:30px 10px;
   h1 {
-    font-size:3.0rem;
+    font-size:2.8rem;
     letter-spacing:6px;
-    font-weight:700;
+    font-weight:300;
     text-align:center;
-    margin: 30px 10px 24px 20px;
+    margin: 30px auto 24px auto;
     color:#3d1c15;
   }
   
   .admin-links-flex-container {
     display:none;
     flex-wrap: wrap;
-    width:100%;
-    max-width:800px;
+    width:95%;
+    max-width:840px;
     justify-content:center;
     margin: 0px auto 0px auto;
-    padding-top:110px;
+    padding-top:90px;
     
     .admin-link {
       text-align:center;
-      flex-basis:200px;
+      flex-basis:190px;
       max-width: 250px;
       flex-grow:1;
       font-size:1.125rem;
@@ -29,25 +28,30 @@
   }
 
   .admin-links-column {
-    padding-top:50px;
+    padding-top:30px;
     font-size:1.125rem;
     .admin-link {
       padding-top:25px;
+      text-align:center;
     }
   }
 
+  a {
+    color:#38686c;
+    text-align:center;
+  }
   a:link {
-    color:#551A8B;
+    color:#38686c;
     text-decoration:none;
   }
   a:link {
-    color:#551a8b;
+    color:#38686c;
   }
   a:hover {
-    color:#aa2a3f;
+    color:#4eab89;
   }
   a:active {
-    color:#de1a3f;
+    color:#bbe0ad;
   }
 }
 
@@ -55,13 +59,34 @@
   .admin-home-wrapper {
     h1 {
       margin-top:50px;
-      font-size:3.5rem;
+      font-size:3.25rem;
+    }
+  }
+}
+
+@media only screen and (min-width:495px) {
+  .admin-home-wrapper {
+    h1 {
+      margin-top:50px;
+      font-size:2.9rem;
+    }
+  }
+}
+
+@media only screen and (min-width:575px) {
+  .admin-home-wrapper {
+    h1 {
+      font-size:3.2rem;
     }
   }
 }
 
 @media only screen and (min-width:680px) {
   .admin-home-wrapper {
+    h1 {
+      margin-top:60px;
+    }
+
     .admin-links-flex-container {
       display:flex;
     }

@@ -9,7 +9,7 @@ RSpec.describe 'features/home: ' do
   it 'displays link to songs page' do
     visit('/home')
     within '.top-menu' do
-      click_link('All Songs')
+      click_link('Songs')
     end
     expect(current_path).to eql('/songs')
     expect(page).to have_content('Songs')

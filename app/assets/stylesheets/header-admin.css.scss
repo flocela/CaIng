@@ -1,6 +1,5 @@
 .header-admin {
 
-  font-family: 'Josefin Sans', Arial;
   .menu-flex-container-xs {
     display: flex;
     flex-wrap: wrap;
@@ -15,7 +14,6 @@
     width:66%;
     justify-content:center;
     .link {
-      //flex-basis:120px;
     }
   }
 
@@ -27,12 +25,37 @@
     color:#38686c;
     a {
       color:#38686c;
-      //color:#aa2a3f;
-      //color:#3e8d78;
+      text-align:center;
+    }
+    a:link {
+      color:#38686c;
       text-decoration:none;
     }
+    a:link {
+      color:#38686c;
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
+  } 
+  .link-admin-home {
+    a:link {
+      color:#408f77; 
+    }
+    a:visited {
+      color:#408f77; 
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
   }
-  
+ 
   @media only screen and (min-width:400px) {
     .menu-flex-container-xs {
       display: flex;

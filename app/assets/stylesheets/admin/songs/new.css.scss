@@ -1,64 +1,16 @@
 .admin-song-new-wrapper {
-  font-family: 'Josefin Sans', Arial;
-  padding-top:20px;
-  padding-bottom:20px;
-  
-  h1 {
-    font-size:.875rem;
-    letter-spacing:1px;
-    font-weight:600;
-    text-align:center;
-    color:#3d1c15;
-    margin:0;
-    padding:35px 0 35px 0;
+  .new-songs {
+    a:link {
+      color:#408f77; 
+    }
+    a:visited {
+      color:#408f77; 
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
   }
-
-  h2 {
-    font-size:4.0rem;
-    letter-spacing:6px;
-    font-weight:700;
-    text-align:center;
-    margin-top:0px;
-    margin-bottom:14px;
-    color:#3d1c15;
-    padding: 45px 0 40px 0;
-  }
-  
-  .song-info-flex-container {
-    display:flex;
-    width:700px;
-    margin:0 auto 0 auto;
-    flex-wrap:wrap;
-  }
-
-  .song-info {
-    flex-basis:700px;
-    text-align:center;
-    margin:5px 0 0 0;
-    font-size:0.875rem;
-  }
-
-  .create-button {
-    margin:20px auto 8px auto;
-  }
-
-  .description {
-    display:inline-block;
-    width:33%;
-    float:left;
-    text-align:right;
-    vertical-align:top;
-    padding-top:.2rem;
-  }
-
-  .input {
-    display:inline-block;
-    width:66%;
-    float:right;
-    vertical-align:top;
-    text-align:left;
-    margin-left:1%;
-  }
-
 }
-
