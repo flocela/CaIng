@@ -11,9 +11,11 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-     puts "inside registrations_controller.rb CREATE"
      if params[:admin][:email] == Rails.application.credentials.development[:admin_email] 
        super
+     else
+       flash[:notice] = "You can't register."
+       redirect_to(admin_home_path)  
      end
    end
 

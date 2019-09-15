@@ -29,7 +29,7 @@ RSpec.describe Admin::SongsController do
     end
   
     it 'is allowed to update a song' do
-      song1 = create("song", new_work_title: 'new work title 1', song_type: '1')
+      song1 = create("song", new_work_title: 'new work title 1')
       expect(Song.count).to eq(1)
       create("song", new_work_title: 'new work title 2')
       expect(Song.count).to eq(2)
@@ -65,12 +65,12 @@ RSpec.describe Admin::SongsController do
 
   end
   
-  describe 'Admin other than flocela signs in and ' do
+  describe 'Admin other than flocela signs in (although only flocela is allowed to register) and' do
     before(:each) do
       admin = Admin.create!(email: "abc@gmail.com", password: "very-secret", password_confirmation: "very-secret")
-      sign_in admin
+       sign_in admin
     end
-  
+
     it 'is not allowed to open admin/songs/index' do
       get :index
       expect(response).to redirect_to(new_admin_session_path)
@@ -87,25 +87,22 @@ RSpec.describe Admin::SongsController do
       expect(response).to redirect_to(new_admin_session_path)
     end
 
-    it 'does not create a song when admin signed in is other than flocela ' do
+    it 'is not allowed to create a song ' do
       song_attributes = attributes_for(:song)
       song_attributes[:new_work_title].should eq('new work title')
-      admin = Admin.create!(email: "other@gmail.com", password: "very-secret", password_confirmation: "very-secret")
-      sign_in admin
       expect { post(:create, params: { song: song_attributes}) }.to change(Song, :count).by(0)
     end
     
-    it 'does not update a song' do
-      song1 = create("song", new_work_title: 'new work title 1', song_type: '1')
+    it 'is not allowed to update a song' do
+      song1 = create("song", new_work_title: 'new work title 1')
       expect(Song.count).to eq(1)
       create("song", new_work_title: 'new work title 2')
       expect(Song.count).to eq(2)
       put :update, params: {id: song1.id, song: {new_work_title: "changed title"}}
       expect(Song.find(song1.id).new_work_title).to eql("new work title 1")    
-      expect(Song.find(song1.id).song_type).to eql(1)
     end
   
-    it 'does not delete a song' do
+    it 'is not allowed to delete a song' do
       song1 = create("song", new_work_title: 'new work title 1')
       expect(Song.count).to eq(1)
       create("song", new_work_title: 'new work title 2')
@@ -117,41 +114,38 @@ RSpec.describe Admin::SongsController do
 
   describe 'No admin signs in and' do
     
-    it 'opening admin/songs/index is not allowed' do
+    it 'is not allowed to open opening admin/songs/index' do
       get :index
       expect(response).to redirect_to(new_admin_session_path)
     end
     
-    it 'opening admin/songs/new is not allowed' do
+    it 'is not allowed to open admin/songs/new' do
       get :new
       expect(response).to redirect_to(new_admin_session_path)
     end 
     
-    it "opening admin/songs/edit is not allowed" do
+    it "is not allowed to open admin/songs/edit" do
       song = create("song", new_work_title: 'new work title1')
       get :edit, params: {id: 1}
       expect(response).to redirect_to(new_admin_session_path)
     end
 
-    it 'creating a song is not allowed' do
+    it 'is not allowed to create a song' do
       song_attributes = attributes_for(:song)
       song_attributes[:new_work_title].should eq('new work title')
-      admin = Admin.create!(email: "other@gmail.com", password: "very-secret", password_confirmation: "very-secret")
-      sign_in admin
       expect { post(:create, params: { song: song_attributes}) }.to change(Song, :count).by(0)
     end
     
-    it 'updating a song is not allowed' do
-      song1 = create("song", new_work_title: 'new work title 1', song_type: '1')
+    it 'is not allowed to update a song' do
+      song1 = create("song", new_work_title: 'new work title 1')
       expect(Song.count).to eq(1)
       create("song", new_work_title: 'new work title 2')
       expect(Song.count).to eq(2)
       put :update, params: {id: song1.id, song: {new_work_title: "changed title"}}
       expect(Song.find(song1.id).new_work_title).to eql("new work title 1")    
-      expect(Song.find(song1.id).song_type).to eql(1)
     end
   
-    it 'deleting a song is not allowed' do
+    it 'is not allowed to delete a song' do
       song1 = create("song", new_work_title: 'new work title 1')
       expect(Song.count).to eq(1)
       create("song", new_work_title: 'new work title 2')
@@ -160,4 +154,5 @@ RSpec.describe Admin::SongsController do
     end
 
   end  
+
 end
