@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::SongsController do 
-# SongsController defines the controller. This test must be inside /controllers or /requests directories. Maybe, file also must be named songs_controller.
-  describe 'flocela signs in as admin and ' do
+  describe 'flocela signs in as admin, and ' do
     before(:each) do
       admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
       sign_in admin
@@ -26,7 +25,6 @@ RSpec.describe Admin::SongsController do
   
     it 'is allowed to create a song' do
       song_attributes = attributes_for(:song)
-      song_attributes[:new_work_title].should eq('new work title')
       expect { post(:create, params: { song: song_attributes}) }.to change(Song, :count).by(1)
     end
   
@@ -37,10 +35,9 @@ RSpec.describe Admin::SongsController do
       expect(Song.count).to eq(2)
       put :update, params: {id: song1.id, song: {new_work_title: "changed title"}}
       expect(Song.find(song1.id).new_work_title).to eql("changed title")    
-      expect(Song.find(song1.id).song_type).to eql(1)
     end
 
-    it 'is allowed to delete a song from the list of songs' do
+    it 'is allowed to delete a song' do
       song1 = create("song", new_work_title: 'new work title 1')
       expect(Song.count).to eq(1)
       create("song", new_work_title: 'new work title 2')
@@ -48,23 +45,23 @@ RSpec.describe Admin::SongsController do
       expect { delete :destroy, params: { id: song1.id } }.to change(Song, :count).by(-1)
     end
 
-    it 'shows flash notice if params id is not an integer when calling edit action' do
-      create("song", id:19, filename: 'act_cool_loveshadow')
-      get :edit, params: {"id":"19a"}
-      expect(flash[:notice]).to match('that is not an integer') 
-    end  
-
-    it 'Song.find is called if :id is an integer' do
+    it 'calls admin/songs/edit with an integer :id, the result is Song.find is called' do
       create("song", id:19, filename: 'act_cool_loveshadow')
       expect(Song).to receive(:find_by_id).and_call_original
       get :edit, params: {id:19}
     end
     
-    it 'Song.find is not called if :id is not an integer' do
+    it 'calls admin/songs/edit with a non-integer :id, the result is Song.find is not called' do
       create("song", id:19, filename: 'act_cool_loveshadow')
       expect(Song).to_not receive(:find_by_id).and_call_original
       get :edit, params: {"id":"19a"}
     end
+    
+    it 'calls admin/songs/edit with a non-integer :id, the result is a flash notice' do
+      create("song", id:19, filename: 'act_cool_loveshadow')
+      get :edit, params: {"id":"19a"}
+      expect(flash[:notice]).to match('that is not an integer') 
+    end  
 
   end
   
