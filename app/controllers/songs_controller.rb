@@ -37,7 +37,7 @@ class SongsController < ApplicationController
   end
 
   def get_zip
-    if (DownloadCount.where(:month => Date.current.beginning_of_month).sum(:month_total) > 500)
+    if (DownloadCount.where(:month => first_of_month).sum(:month_total) > 500)
       flash[:notice] = "Already have 500 downloads"
       redirect_to(songs_path)  
     elsif (!params[:id].scan(/\D/).empty?)
@@ -71,17 +71,20 @@ class SongsController < ApplicationController
   end
 
   def update_download_count(song) 
-      downloadCount = DownloadCount.find_by(song_id: song.id, month: Date.current.beginning_of_month)
-      if (downloadCount)
-	downloadCount.month_total = downloadCount.month_total + 1
-	downloadCount.save
+      downloadCountObj = DownloadCount.find_by(song_id: song.id, month: first_of_month)
+      if (downloadCountObj)
+	downloadCountObj.month_total = downloadCountObj.month_total + 1
+	downloadCountObj.save
       else
-	newDownloadCount = DownloadCount.new(:song_id => song.id, month: Date.current.beginning_of_month, :month_total => 1)
-	newDownloadCount.save
+	newDownloadCountObj = DownloadCount.new(:song_id => song.id, 
+                                             month: first_of_month, 
+                                             :month_total => 1)
+	newDownloadCountObj.save
       end
   end 
-  def monthly_downloads_exist(song_id_x)
-    DownloadCount.find_by(song_id: song_id_x)
+
+  def first_of_month
+    Date.current.beginning_of_month
   end
 
   def monthly_download_count(song_id_x) 
@@ -93,7 +96,7 @@ class SongsController < ApplicationController
   end    
 
   def total_downloads_this_month
-    DownloadCount.where(:month => Date.current.beginning_of_month).sum(:month_total)  
+    DownloadCount.where(:month => first_of_month).sum(:month_total)  
   end
 
   def aws_key_id
@@ -103,6 +106,5 @@ class SongsController < ApplicationController
   def aws_secret_access_key
       Rails.application.credentials.development[:aws][:secret_access_key]
   end
- 
     
 end

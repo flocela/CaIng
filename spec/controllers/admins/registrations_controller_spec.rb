@@ -9,6 +9,7 @@ RSpec.describe Admins::RegistrationsController do
         }
     }
   end
+
   let(:abc_admin_attributes) do
     { "admin" => {
         "email" => "abc@gmail.com",
@@ -17,12 +18,14 @@ RSpec.describe Admins::RegistrationsController do
         }
     }
   end
+
   it 'allows flocela@gmail.com to register' do
     @request.env["devise.mapping"]=Devise.mappings[:admin]
     expect(Admin.count).to equal(0)
     post :create, params: flocela_admin_attributes
     expect(Admin.count).to equal(1)
   end
+
   # only want to allow flocela@gmail.com to be able to register
   it 'does not allow abc@gmail.com to register' do
     @request.env["devise.mapping"]=Devise.mappings[:admin]
