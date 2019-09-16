@@ -43,17 +43,9 @@ class SongsController < ApplicationController
     elsif (!params[:id].scan(/\D/).empty?)
       flash[:notice] = "that is not an integer"
       redirect_to(songs_path)
-    else 
-      s3 = Aws::S3::Resource.new(region: 'us-east-1', 
-                                 access_key_id: aws_key_id, 
-                                 secret_access_key: aws_secret_access_key)
+    else
       song = Song.find_by_id(params[:id])
-      filename = song.filename << ".zip"
-      s3_file_path ="m4a/#{filename}"
-      object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
-      object.get(response_target: "#{Rails.root}/app/assets/songs/#{filename}")
-      File.chmod(0666, "#{Rails.root}/app/assets/songs/#{filename}")
-      send_file "app/assets/songs/#{filename}", :filename => "#{filename}", :url_based_filename => false, :type=>"application/zip"
+      send_song_from_aws(song)
       downloadCount = DownloadCount.find_by(song_id: song.id, month: Date.current.beginning_of_month)
       if (downloadCount)
 	downloadCount.month_total = downloadCount.month_total + 1
@@ -62,12 +54,29 @@ class SongsController < ApplicationController
 	newDownloadCount = DownloadCount.new(:song_id => song.id, month: Date.current.beginning_of_month, :month_total => 1)
 	newDownloadCount.save
       end
-      File.delete("app/assets/songs/#{filename}") if File.exists?("app/assets/songs/#{filename}")
     end
   end
 
   private
-    
+
+  def send_song_from_aws(song)  
+      s3 = Aws::S3::Resource.new(region: 'us-east-1', 
+                                 access_key_id: aws_key_id, 
+                                 secret_access_key: aws_secret_access_key)
+      filename = song.filename << ".zip"
+      s3_file_path ="m4a/#{filename}"
+      object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
+      object.get(response_target: "#{Rails.root}/app/assets/songs/#{filename}")
+      File.chmod(0666, "#{Rails.root}/app/assets/songs/#{filename}")
+      send_file "app/assets/songs/#{filename}", 
+                 :filename => "#{filename}", 
+                 :url_based_filename => false, 
+                 :type=>"application/zip"
+      if (File.exists?("app/assets/songs/#{filename}"))
+        File.delete("app/assets/songs/#{filename}") 
+      end
+  end
+ 
   def monthly_downloads_exist(song_id_x)
     DownloadCount.find_by(song_id: song_id_x)
   end
