@@ -1,14 +1,14 @@
 require 'rails_helper'
-RSpec.describe 'In Admin Songs Page' do
-  describe 'not signed in and then ' do
-    it 'if admin is not signed in then can not see admin/songs' do
+RSpec.describe 'Admin Songs Page' do
+  describe 'admin is not signed in' do
+    it 'then can not see admin/songs' do
       expect(Admin.count).to equal(0)
       visit('/admin/songs')
       expect(page).to have_content('You need to sign in or sign up')
     end
   end
   
-  describe 'signing up as flocela and then ' do
+  describe 'admin is signed in as flocela' do
     before(:each) do
       visit('/admins/sign_up')
       fill_in('Email', with: 'flocela@gmail.com')
@@ -18,7 +18,7 @@ RSpec.describe 'In Admin Songs Page' do
       expect(current_path).to eql('/')
     end
     
-    it 'shows links to New Song Page' do
+    it 'New Song link is shown' do
       visit('/admin/songs')
       within '.bot-menu' do
         click_link('New Song')
@@ -26,7 +26,7 @@ RSpec.describe 'In Admin Songs Page' do
       expect(current_path).to have_content('/admin/songs/new')  
     end 
 
-    describe 'fills in song input in songs/new' do
+    describe 'fills in song form' do
       before(:each) do
 	visit('/admin/songs/new')
 	fill_in('New Work Title', with: 'New Work Title 3')
@@ -44,13 +44,13 @@ RSpec.describe 'In Admin Songs Page' do
 	fill_in('Filename', with: 'Filename 3')
 	fill_in('File Size', with: '5')
       end 
-      it 'creates a new song' do
+      it 'a new song is created' do
 	click_button('Create')
 	expect(current_path).to have_content('/admin/songs')
 	expect(page).to have_content('New Work Title 3')
       end
 
-      it 'creates song and edits a song' do
+      it 'a new song is created and edited' do
 	click_button('Create')
 	expect(current_path).to have_content('/admin/songs')
 	expect(page).to have_content('New Work Title 3')
@@ -66,7 +66,7 @@ RSpec.describe 'In Admin Songs Page' do
  
   end
 
-  describe 'selenium driver, then signing up as flocela and then ' do
+  describe 'using the selenium driver, admin is signed in as flocela' do
     before(:each) do
       Capybara.current_driver = :selenium
       visit('/admins/sign_up')
@@ -77,7 +77,7 @@ RSpec.describe 'In Admin Songs Page' do
       expect(current_path).to eql('/')
     end
     
-    it 'deletes a song it just created' do
+    it 'a new song is created and deleted' do
       visit('/admin/songs/new')
       fill_in('New Work Title', with: 'New Work Title 3')
       fill_in('Song Type', with: '3')
