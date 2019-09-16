@@ -46,14 +46,7 @@ class SongsController < ApplicationController
     else
       song = Song.find_by_id(params[:id])
       send_song_from_aws(song)
-      downloadCount = DownloadCount.find_by(song_id: song.id, month: Date.current.beginning_of_month)
-      if (downloadCount)
-	downloadCount.month_total = downloadCount.month_total + 1
-	downloadCount.save
-      else
-	newDownloadCount = DownloadCount.new(:song_id => song.id, month: Date.current.beginning_of_month, :month_total => 1)
-	newDownloadCount.save
-      end
+      update_download_count(song)
     end
   end
 
@@ -76,7 +69,17 @@ class SongsController < ApplicationController
         File.delete("app/assets/songs/#{filename}") 
       end
   end
- 
+
+  def update_download_count(song) 
+      downloadCount = DownloadCount.find_by(song_id: song.id, month: Date.current.beginning_of_month)
+      if (downloadCount)
+	downloadCount.month_total = downloadCount.month_total + 1
+	downloadCount.save
+      else
+	newDownloadCount = DownloadCount.new(:song_id => song.id, month: Date.current.beginning_of_month, :month_total => 1)
+	newDownloadCount.save
+      end
+  end 
   def monthly_downloads_exist(song_id_x)
     DownloadCount.find_by(song_id: song_id_x)
   end
