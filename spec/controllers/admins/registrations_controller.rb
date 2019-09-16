@@ -17,7 +17,7 @@ RSpec.describe Admins::RegistrationsController do
         }
     }
   end
-  it 'does allow flocela@gmail.com to register' do
+  it 'allows flocela@gmail.com to register' do
     @request.env["devise.mapping"]=Devise.mappings[:admin]
     expect(Admin.count).to equal(0)
     post :create, params: flocela_admin_attributes
@@ -29,13 +29,6 @@ RSpec.describe Admins::RegistrationsController do
     expect(Admin.count).to equal(0)
     post :create, params: abc_admin_attributes
     expect(Admin.count).to equal(0)
-  end
-  describe "Post#create" do
-    it 'creates a new admin' do
-      @request.env["devise.mapping"]=Devise.mappings[:admin]
-      post :create, params: flocela_admin_attributes
-      expect(response).to have_http_status(:created)
-    end
   end
 end
 
