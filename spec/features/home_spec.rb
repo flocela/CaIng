@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'features/home: ' do
+RSpec.describe 'Home Page: ' do
   it 'displays the name of the app' do
     visit('/home')
     expect(page).to have_content('Cantando Inglés')
