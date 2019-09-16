@@ -66,9 +66,9 @@
 	  <section class=song_info>
 	    File size: <%= song.zip_size %>
 	  </section>
-          <% if monthly_downloads_exist(song.id) %>
+          <% if curr_monthly_downloads_exist(song.id) %>
 	    <section class = song_info>
-	      Downloads this month: <%= monthly_download_count(song.id) %>
+	      Downloads this month: <%= curr_monthly_download_count(song.id) %>
 	    </section> 
           <% end %>
 	</section>

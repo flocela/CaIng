@@ -44,9 +44,9 @@ class SongsController < ApplicationController
       flash[:notice] = "that is not an integer"
       redirect_to(songs_path)
     else 
-      access_key_id = Rails.application.credentials.development[:aws][:access_key_id]
-      secret_access_key = Rails.application.credentials.development[:aws][:secret_access_key]
-      s3 = Aws::S3::Resource.new(region: 'us-east-1', access_key_id: access_key_id, secret_access_key: secret_access_key)
+      s3 = Aws::S3::Resource.new(region: 'us-east-1', 
+                                 access_key_id: aws_key_id, 
+                                 secret_access_key: aws_secret_access_key)
       song = Song.find_by_id(params[:id])
       filename = song.filename << ".zip"
       s3_file_path ="m4a/#{filename}"
@@ -84,4 +84,13 @@ class SongsController < ApplicationController
     DownloadCount.where(:month => Date.current.beginning_of_month).sum(:month_total)  
   end
 
+  def aws_key_id
+    Rails.application.credentials.development[:aws][:access_key_id]
+  end
+
+  def aws_secret_access_key
+      Rails.application.credentials.development[:aws][:secret_access_key]
+  end
+ 
+    
 end
