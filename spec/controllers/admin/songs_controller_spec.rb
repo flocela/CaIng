@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Admin::SongsController do 
   describe 'flocela signs in as admin, and ' do
     before(:each) do
-      admin = Admin.create!(email: "flocela@gmail.com", password: "very-secret", password_confirmation: "very-secret")
+      admin = Admin.create!(email: "flocela@gmail.com", 
+                            password: "very-secret", 
+                            password_confirmation: "very-secret")
       sign_in admin
     end
     
@@ -18,7 +20,7 @@ RSpec.describe Admin::SongsController do
     end 
     
     it 'is allowed to open admin/songs/edit' do
-      song = create("song", new_work_title: 'new work title1')
+      song = create("song")
       get :edit, params: {id: song.id}
       expect(response).to render_template("edit")
     end 
@@ -67,7 +69,9 @@ RSpec.describe Admin::SongsController do
   
   describe 'Admin other than flocela signs in (although only flocela is allowed to register) and' do
     before(:each) do
-      admin = Admin.create!(email: "abc@gmail.com", password: "very-secret", password_confirmation: "very-secret")
+      admin = Admin.create!(email: "abc@gmail.com", 
+                            password: "very-secret", 
+                            password_confirmation: "very-secret")
        sign_in admin
     end
 
@@ -82,7 +86,7 @@ RSpec.describe Admin::SongsController do
     end 
     
     it "is not allowed to open admin/songs/edit" do
-      song = create("song", new_work_title: 'new work title1')
+      song = create("song")
       get :edit, params: {id: 1}
       expect(response).to redirect_to(new_admin_session_path)
     end
@@ -125,14 +129,13 @@ RSpec.describe Admin::SongsController do
     end 
     
     it "is not allowed to open admin/songs/edit" do
-      song = create("song", new_work_title: 'new work title1')
+      song = create("song")
       get :edit, params: {id: 1}
       expect(response).to redirect_to(new_admin_session_path)
     end
 
     it 'is not allowed to create a song' do
       song_attributes = attributes_for(:song)
-      song_attributes[:new_work_title].should eq('new work title')
       expect { post(:create, params: { song: song_attributes}) }.to change(Song, :count).by(0)
     end
     
