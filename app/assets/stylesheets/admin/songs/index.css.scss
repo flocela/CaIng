@@ -15,7 +15,7 @@
   h2 {
     font-size:4.0rem;
     letter-spacing:6px;
-    font-weight:700;
+    font-weight:300;
     text-align:center;
     color:#3c2b21;
     padding: 25px 0 25px 0;
@@ -59,6 +59,22 @@
     margin-right:auto;
     //background-color:#ddd;
     text-align:center;
+    a { 
+      color:#38686c;
+      text-decoration:none;
+    }
+    a:link {
+      color:#38686c;
+    }
+    a:visited {
+      color:#38686c;
+    }
+    a:hover {
+      color:#4eab89;
+    }
+    a:active {
+      color:#bbe0ad;
+    }
   }
 
   .song-title {
