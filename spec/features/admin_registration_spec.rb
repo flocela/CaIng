@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'Admin Registration' do
+RSpec.describe 'Admin Registration Feature Spec' do
   
   it 'will not register admin that is not flocela@gmail.com' do
     visit('/admins/sign_up')
