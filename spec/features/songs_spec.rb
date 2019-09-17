@@ -49,22 +49,61 @@ RSpec.describe 'Songs Page' do
   describe 'downloading zip file' do
     it 'downloads zip file from amazon' do
       begin
-        expect(File.file?('app/assets/songs/amazing_grace_rich_tuttle.zip')).to be false
+        expect(File.file?("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip")).to be false
         create("song", id: 15, filename: 'amazing_grace_rich_tuttle')
-        expect_any_instance_of(SongsController).to 
-          receive(:send_file)
-          .with("app/assets/songs/amazing_grace_rich_tuttle.zip", 
+        expect_any_instance_of(SongsController).to receive(:send_file)
+          .with("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip", 
                 :filename => "amazing_grace_rich_tuttle.zip", 
                 :url_based_filename => false, 
                 :type => "application/zip")
           .and_call_original
         visit('/songs/get_zip/15')
       ensure
-        if (File.exists?('app/assets/songs/amazing_grace_rich_tuttle.zip')
-          File.delete('app/assets/songs/amazing_grace_rich_tuttle.zip')
-        end
+        File.delete("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip") if File.exists?("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip")
       end
     end
   end
+
+  it 'a new song is created and deleted' do
+    Capybara.current_driver = :selenium
+    filepath = "#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip" 
+    expect(File.file?(filepath)).to be false
+    
+    visit('/admins/sign_up')
+    fill_in('Email', with: 'flocela@gmail.com')
+    fill_in('Password', with: 'very-secret')
+    fill_in('Password confirmation', with: 'very-secret')
+    click_button('Sign up')
+    expect(current_path).to eql('/')
+    
+    visit('/admin/songs/new')
+    fill_in('New Work Title', with: 'Amazing Grace Title')
+    fill_in('Song Type', with: '3')
+    fill_in('Original Title in E', with: 'Orig Eng Title')
+    fill_in('Original Artist', with: 'Orig Artist')
+    fill_in('Originally Downloaded At (name)', with: 'Orig Downloaded At Name')
+    fill_in('Originally Downloaded At (link)', with: 'Orig Downloaded At Link')
+    fill_in('Original License (name)', with: 'Orig License Name')
+    fill_in('Original License (link)', with: 'Orig License Link')
+    fill_in('New License (name)', with: 'Name of New Work License') 
+    fill_in('New License (link)', with: 'Link to New Work License')
+    fill_in('Filename', with: 'amazing_grace_rich_tuttle')
+    fill_in('File Size', with: '5')
+    fill_in('Changes Made To Orig (english)', with: 'changes english')
+    fill_in('Changes Made To Orig (spanish)', with: 'changes spanish')
+    click_button('Create')
+    expect(current_path).to have_content('/admin/songs')
+    
+    visit('/songs')
+    expect(page).to have_content('Amazing Grace Title')
+    click_link('Download')
+    a = page.driver.browser.switch_to.alert
+    expect(a.text).to eq("Save As")
+    expect(a.text).to eq("amazing_grace_rich_tuttle")
+    
+    File.delete("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip") if File.exists?("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip")
+    Capybara.use_default_driver
+  end
 =end
+  
 end

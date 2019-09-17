@@ -64,7 +64,7 @@
 	    Filename: <%= song.filename %>.zip
 	  </section>
 	  <section class=song_info>
-	    File size: <%= song.zip_size %>
+	    <%= link_to 'Download', songs_get_zip_path(song) %>
 	  </section>
           <% if monthly_download_count(song.id) %>
 	    <section class = song_info>
