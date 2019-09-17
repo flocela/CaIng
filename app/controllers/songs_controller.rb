@@ -61,18 +61,17 @@ class SongsController < ApplicationController
       s3_file_path ="m4a/#{filename}"
       object = s3.bucket('cantandoinglesbucket').object(s3_file_path)
       object.get(response_target: filepath)
-      File.chmod(0666, "#{Rails.root}/app/assets/songs/#{filename}")
+      File.chmod(0666, filepath)
       send_file filepath, 
                 :filename => "#{filename}", 
                 :url_based_filename => false, 
                 :type=>"application/zip"
-      if (File.exists?(filepath))
-        File.delete(filepath) 
-      end
+      File.delete(filepath) if(File.exists?(filepath))
   end
 
   def update_download_count(song) 
-      downloadCountObj = DownloadCount.find_by(song_id: song.id, month: first_of_month)
+      downloadCountObj = DownloadCount.find_by(song_id: song.id, 
+                                               month: first_of_month)
       if (downloadCountObj)
 	downloadCountObj.month_total = downloadCountObj.month_total + 1
 	downloadCountObj.save
