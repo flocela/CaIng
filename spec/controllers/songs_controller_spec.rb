@@ -6,21 +6,23 @@ RSpec.describe SongsController do
       create("download_count", song_id:1, month: Time.parse("2019-07-01"), month_total:400)
       create("download_count", song_id:1, month: Time.parse("2019-09-01"), month_total:500)
       create("song", id:2, filename: 'act_cool_loveshadow')
+      filepath = "#{Rails.root}/app/assets/songs/act_cool_loveshadow.zip" 
       expect_any_instance_of(SongsController).to receive(:send_file)
-	.with('app/assets/songs/act_cool_loveshadow.zip',
+	.with(filepath,
 	      :filename => 'act_cool_loveshadow.zip',
 	      :url_based_filename => false,
 	      :type => 'application/zip')
 	.and_call_original
-      get :get_zip, params: {id:2}
-     
+	get :get_zip, params: {id:2}
+=begin     
       expect_any_instance_of(SongsController).not_to receive(:send_file)
-	.with('app/assets/songs/act_cool_loveshadow.zip',
+	.with(filepath,
   	      :filename => 'act_cool_loveshadow.zip',
 	      :url_based_filename => false, 
 	      :type => 'application/zip')
 	.and_call_original
       get :get_zip, params: {id:2}
+=end
     end 
     
     it "increases a song's monthly download count when the song is downloaded" do
@@ -43,7 +45,7 @@ RSpec.describe SongsController do
       get :get_zip, params: {"id":"19a"}
     end   
     
-    it '/get_zip/:id shows flash notice if params id is not an integer' do
+    it 'shows flash notice if :id in /get_zip/:id is not an integer' do
       create("song", 
 	     new_work_title: 'amazing_grace_download', 
 	     id: 15, 
