@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :download_count do
     song_id { 1 }
-    month { "2019-09-31" }
-    month_total { 1 }
+    month { "2019-09-01" }
+    month_total {0}
   end
 
   #factory :admin do
