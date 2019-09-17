@@ -49,17 +49,18 @@ RSpec.describe 'Songs Page' do
   describe 'downloading zip file' do
     it 'downloads zip file from amazon' do
       begin
-        expect(File.file?("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip")).to be false
+       filepath = "#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip" 
+        expect(File.file?(filepath)).to be false
         create("song", id: 15, filename: 'amazing_grace_rich_tuttle')
         expect_any_instance_of(SongsController).to receive(:send_file)
-          .with("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip", 
+          .with(filepath, 
                 :filename => "amazing_grace_rich_tuttle.zip", 
                 :url_based_filename => false, 
                 :type => "application/zip")
           .and_call_original
         visit('/songs/get_zip/15')
       ensure
-        File.delete("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip") if File.exists?("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip")
+        File.delete(filepath) if File.exists?(filepath)
       end
     end
   end
@@ -101,7 +102,7 @@ RSpec.describe 'Songs Page' do
     expect(a.text).to eq("Save As")
     expect(a.text).to eq("amazing_grace_rich_tuttle")
     
-    File.delete("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip") if File.exists?("#{Rails.root}/app/assets/songs/amazing_grace_rich_tuttle.zip")
+    File.delete(filepath) if File.exists?(filepath)
     Capybara.use_default_driver
   end
 =end
