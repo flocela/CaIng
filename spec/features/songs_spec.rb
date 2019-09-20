@@ -11,9 +11,9 @@ RSpec.describe 'Songs Featuer Spec' do
     end
 
     it "does not show num of downloads when there are no downloads" do
-      create("song", new_work_title: 'No Downloads Song')
+      create("song", new_work_title: 'No Downloads Title')
       visit('/songs')
-      expect(page).to have_content('No Downloads Song')
+      expect(page).to have_content('No Downloads Title')
       expect(page).to_not have_content('Downloads this month') 
     end
     
