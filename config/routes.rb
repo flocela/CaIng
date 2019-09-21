@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   end
   get('admin/home' => 'admin/home#index')
   root to: 'home#index'
-  get('home' => 'home#index')
-  get('songs' => 'songs#index')
+  scope "(:locale)", locale: /en|es/ do
+    get('home' => 'home#index')
+    get('songs' => 'songs#index')
+  end
   get "songs/get_zip/:id" => "songs#get_zip", :as => "songs_get_zip"
 end

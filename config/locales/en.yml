@@ -30,4 +30,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+ 
+  intro_one: "This phone application may make practicing English more interesting. It plays a song while showing the lyrics in English and Spanish. It also shows the meanings of the words in the context of the song. Some songs are rough; some are happy. I chose these songs because they speak a little about life in America, although not all the songs are strictly American."  
+  intro_two: "Cantando Inglés is free on the "
+  intro_three: "You can download the songs to use in the app for free."
+  intro_four: "Check out the "
+  intro_five: "For phones with Android 4.0 and above"  
+
+  google_play_store: "Google Play Store"
+
+  on_your_way: "I hope this app helps someone on their way."

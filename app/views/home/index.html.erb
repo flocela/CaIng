@@ -1,9 +1,14 @@
 <section class=home-wrapper>
   <%= render 'header_basic' %>
   <h1>Cantando Inglés</h1>
-  <section class=introduction>
-    This phone application may make practicing English more interesting. It plays a song while showing the lyrics in English and Spanish. It also shows the real meaning of the words in the context of the song. I chose these songs because I though they had beauty and spoke to real life in America, although not all the songs are strictly American.  Some songs are rough, some are happy.  
-  Cantando Inglés is free at the <%= link_to 'Google Play Store', 'https://play.google.com/store/apps/details?id=com.eebolf.CantandoIngles' %>. You can download the songs to use in the app for free. Check out the <%= link_to 'video', 'https://www.youtube.com/watch?v=n-cRzeZw9Bk' %>. For phones with Android 4.0 and above. 
+  <section class="introduction intro-one">
+    <%= t('intro_one') %>
+  </section>
+  <section class="introduction">
+    <%= t('intro_two') %><%= link_to t('google_play_store'), 'https://play.google.com/store/apps/details?id=com.eebolf.CantandoIngles' %>.
+    <%= t('intro_three') %>
+    <%= t('intro_four') %><%= link_to 'video','https://www.youtube.com/watch?v=n-cRzeZw9Bk' %>.
+    <%= t('intro_five') %>
   </section>
   <section class="phone-images-wrapper">
     <section class="phone-images-flex-container">
@@ -16,6 +21,7 @@
     </section>
   </section>
   <section class=introduction>
-    I hope these apps help someone on their way.  - Aurea Flocela Maldonado
+    <%= t('on_your_way') %> - Flocelita Maldonado
   </section>
 </section>
+
