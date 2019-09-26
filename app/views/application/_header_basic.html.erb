@@ -16,9 +16,9 @@
     </section>
     <section class="link link-espanol">
       <% if I18n.locale == :es %>
-        <%= link_to(t('switch_language'), '/en/songs') %>
+        <%= link_to_unless I18n.locale == :en, t('switch_language'), {locale: :en} %>
       <% else %>
-        <%= link_to(t('switch_language'), '/es/songs') %>
+        <%= link_to_unless I18n.locale == :es, t('switch_language'), {locale: :es} %>
       <% end %>
     </section>
   </section>
@@ -37,9 +37,9 @@
     </section>
     <section class="link link-espanol">
       <% if I18n.locale == :es %>
-        <%= link_to(t('switch_language'), '/en/songs') %>
+        <%= link_to_unless I18n.locale == :en, t('switch_language'), {locale: :en} %>
       <% else %>
-        <%= link_to(t('switch_language'), '/es/songs') %>
+        <%= link_to_unless I18n.locale == :es, t('switch_language'), {locale: :es} %>
       <% end %>
     </section>
   </section>
