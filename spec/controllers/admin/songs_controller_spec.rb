@@ -122,20 +122,21 @@ RSpec.describe Admin::SongsController do
 
   describe 'No admin signs in and' do
     
-    it 'is not allowed to open opening admin/songs/index' do
+    it 'is not allowed to open admin/songs/index' do
       get :index
-      expect(response).to redirect_to(new_admin_session_path)
+      expect(response).to redirect_to('/admins/sign_in')
     end
     
     it 'is not allowed to open admin/songs/new' do
+      I18n.locale = :en     
       get :new
-      expect(response).to redirect_to(new_admin_session_path)
+      expect(response).to redirect_to('/admins/sign_in')
     end 
     
     it "is not allowed to open admin/songs/edit" do
       song = create("song")
       get :edit, params: {id: 1}
-      expect(response).to redirect_to(new_admin_session_path)
+      expect(response).to redirect_to('/admins/sign_in')
     end
 
     it 'is not allowed to create a song' do

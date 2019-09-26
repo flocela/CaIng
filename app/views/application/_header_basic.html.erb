@@ -15,7 +15,11 @@
       <%= link_to(t('play_store'), "https://play.google.com/store/search?q=cantando%20ingles") %>
     </section>
     <section class="link link-espanol">
-      Español
+      <% if I18n.locale == :es %>
+        <%= link_to(t('switch_language'), '/en/songs') %>
+      <% else %>
+        <%= link_to(t('switch_language'), '/es/songs') %>
+      <% end %>
     </section>
   </section>
   <section class="menu-flex-container-sm">
@@ -32,7 +36,11 @@
       <%= link_to(t('songs'), songs_path) %>
     </section>
     <section class="link link-espanol">
-      Español
+      <% if I18n.locale == :es %>
+        <%= link_to(t('switch_language'), '/en/songs') %>
+      <% else %>
+        <%= link_to(t('switch_language'), '/es/songs') %>
+      <% end %>
     </section>
   </section>
 </section>

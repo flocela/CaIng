@@ -6,9 +6,9 @@
   <section class=title-xs>
     <h1>Cantando Inglés</h1>
   </section>
-  <h2>Songs</h2>
+  <h2><%= t('songs') %></h2>
   <section class="copyright">
-    Downloads are available for free to use in the Cantando Inglés Android application. If you're downloading for other uses, see license information for restrictions. The artists have provided a license for each song, see 'Original License'. The 'New Work' is the original song plus the translations; its license is under 'New Work License'.
+    <%= t('songs_intro_one') %>
   </section>
   <section class="songs-flex-container">
     <% @songs.each do |song| %>
@@ -18,75 +18,82 @@
 	</section>
 	<section class=labels>
 	  <section class="song_info orig-title">
-	    Original Title: 
+            <%= t('songs_original_title') %>:
 	    <%= song.orig_english_title %>
 	  </section>
 	  <section class="song_info orig-artist">
-	    Original Artist:
+            <%= t('songs_original_artist') %>:
             <%= song.orig_artist %>
 	  </section>
           <% if song.orig_english_uses_sample_from_1? %>
 	    <section class=song_info>
-	      Orig song uses samples from:
-              <%= song.orig_english_uses_sample_from_1%>
+              <%= t('songs_orig_song_uses_samples_from') %>:
+              <% if I18n.locale == :en %>
+                <%= song.orig_english_uses_sample_from_1%>
+              <% else %>
+                <%= song.orig_spanish_uses_sample_from_1%>
+              <% end %>  
 	    </section>
 	    <section class=song_info>
-	      Sample at:
               <%= link_to song.orig_uses_sample_from_link_name_1,
                           song.orig_uses_sample_from_link_1 %>
             </section>
           <% end %>  
 	  <section class=song_info>
-	    Song Difficulty:
+            <%= t('songs_difficulty') %>:
             <%= song.song_type %>
 	  </section>
 	  <section class=song_info>
-	    Originally Downloaded at:  
+            <%= t('songs_originally_downloaded_at') %>:
             <%= link_to song.orig_downloaded_at_name, 
                         song.orig_downloaded_at_link %>
 	  </section>
 	  <section class=song_info>
-	    Originally Published:
+            <%= t('songs_originally_published') %>:
             <%= song.orig_pub_date %>
 	  </section>
 	  <section class=song_info>
-	    Original Lyrics Dated:
+            <%= t('songs_lyrics_dated') %>:
             <%= song.orig_lyrics_date %>
 	  </section>
 	  <section class=song_info>
-	    Reference to Original Lyrics:
+            <%= t('songs_reference_to_orig_lyrics') %>:
             <%= link_to song.orig_lyrics_date_link_name, 
                         song.orig_lyrics_date_link %>
 	  </section>
 	  <section class=song_info>
-	    Original License:
+            <%= t('songs_original_license') %>:
             <%= link_to song.orig_lyrics_date_link_name,
                         song.orig_lyrics_date_link %>
 	  </section>
 	  <section class=song_info>
-	    New Work License:
+            <%= t('songs_new_work_license') %>:
             <%= link_to song.name_of_new_work_license,
                         song.link_to_new_work_license %>
 	  </section>
 	  <section class=song_info>
-	    Changes Made:
-            <%= song.orig_english_changes_made %>
+            <%= t('songs_changes_made') %>:
+            <% if I18n.locale == :en %>
+              <%= song.orig_english_changes_made %>
+            <% else %>
+              <%= song.orig_spanish_changes_made %>
+            <% end %>  
 	  </section>
           <% if song.orig_attribution_link? %>
 	    <section class=song_info>
-	      <%= link_to 'Attribution Link', song.orig_attribution_link %>
+	      <%= link_to t('songs_attribution_link'), song.orig_attribution_link %>
 	    </section>
           <% end %>
 	  <section class="song_info filename">
-	    Filename:
+            <%= t('songs_filename') %>
             <%= song.filename %>.zip
 	  </section>
 	  <section class=song_info>
-	    <%= link_to 'Download', songs_get_zip_path(song) %>
+	    <%= link_to t('songs_download'), songs_get_zip_path(song) %>
 	  </section>
           <% if monthly_download_count(song.id) %>
 	    <section class = song_info>
-	      Downloads this month:
+	      <%= t('songs_monthly_downloads') %>:
               <%= monthly_download_count(song.id) %>
 	    </section> 
           <% end %>
@@ -95,7 +102,7 @@
     <% end %>
   </section>
   <section class=total-downloads>
-    Total Downloads This Month: <%= total_downloads_this_month() %> 
+    <%= t('songs_total_downloads') %>: <%= total_downloads_this_month() %> 
   </section>
 </section>
 

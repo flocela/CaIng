@@ -1,20 +1,31 @@
 require 'rails_helper'
 
-RSpec.describe 'Songs Featuer Spec' do 
+RSpec.describe 'es/songs Feature Spec' do 
   describe 'viewing the index' do
+    it 'click on English goes to English page' do
+      visit('/songs')
+      within '.menu-flex-container-sm .link-espanol' do
+	click_link('English')
+      end
+      within 'h2' do
+        expect(current_path).to eq '/en/songs'        
+        expect(page).to have_content('Songs') 
+      end
+    end
+
     it 'lists all existing songs' do
       create("song", new_work_title: 'new work title 1')
       create("song", new_work_title: 'new work title 2')
-      visit('/en/songs')
+      visit('/songs')
       expect(page).to have_content('new work title 1')
       expect(page).to have_content('new work title 2')
     end
 
     it "does not show num of downloads when there are no downloads" do
       create("song", new_work_title: 'No Downloads Title')
-      visit('/en/songs')
+      visit('/songs')
       expect(page).to have_content('No Downloads Title')
-      expect(page).to_not have_content('Downloads this month') 
+      expect(page).to_not have_content('Descargas este mes') 
     end
     
     it 'shows number of downloads when there are downloads' do
@@ -26,9 +37,9 @@ RSpec.describe 'Songs Featuer Spec' do
       create("download_count", song_id: 20, 
                                        month: Date.current.beginning_of_month, 
                                        month_total: 20)
-      visit('/en/songs')
-      expect(page).to have_content('Downloads this Month: 10')
-      expect(page).to have_content('Downloads this Month: 20') 
+      visit('/songs')
+      expect(page).to have_content('Descargas este mes: 10')
+      expect(page).to have_content('Descargas este mes: 20') 
     end
     
     it 'shows total number of downloads from all songs in this month' do
@@ -40,10 +51,9 @@ RSpec.describe 'Songs Featuer Spec' do
              song_id: 20, 
              month: Date.current.beginning_of_month, 
              month_total: 20)
-      visit('/en/songs')
-      expect(page).to have_content('Total Downloads This Month: 30')
+      visit('/songs')
+      expect(page).to have_content('Descargas En Total Este Mes: 30')
     end
-
   end
 
 =begin
@@ -109,3 +119,4 @@ RSpec.describe 'Songs Featuer Spec' do
 =end
   
 end
+

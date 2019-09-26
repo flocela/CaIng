@@ -42,6 +42,8 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  #config.after(:each) {I18n.locale = :en }
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

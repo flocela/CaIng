@@ -45,5 +45,24 @@ en:
   apps_by_flo: "Apps By Flo"
   songs: "Songs"
   play_store: "Google Play"
+  switch_language: "Español"
 
+  songs_intro_one: Downloads are available for free to use in the Cantando Inglés Android application. If you're downloading for other uses, see license information for restrictions. The artists have provided a license for each song, see 'Original License'. The 'New Work' is the original song plus the translations; its license is under 'New Work License'.
 
+  songs_original_title: Original Title
+  songs_original_artist: Artista Original
+  songs_orig_song_uses_samples_from: Orig Song Uses Samples From
+  songs_sample_at: Sample at
+  songs_difficulty: Difficulty
+  songs_originally_downloaded_at: Originally Downloaded at
+  songs_originally_published: Originally Published
+  songs_lyrics_dated: Original Lyrics Dated
+  songs_reference_to_orig_lyrics: Reference to Original Lyrics
+  songs_original_license: Original License
+  songs_new_work_license: New Work License
+  songs_changes_made: Changes Made
+  songs_attribution_link: Attribution Link
+  songs_filename: Filename 
+  songs_download: Download
+  songs_monthly_downloads: Downloads this Month
+  songs_total_downloads: Total Downloads This Month
