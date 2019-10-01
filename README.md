@@ -1,15 +1,19 @@
 # README
 This is the repository for the Cantando Ingles rails website.
 
-/                  -Landing page for Cantando Ingles.
+/                  - Landing page for Cantando Ingles. The default language
+                     is :es.                   
 
-/songs             -Lists all the current songs that one can download here or
-                 using the Android app Cantando Ingles
+/songs             - Lists all the songs that one can download from this website or
+                 using the Android app Cantando Ingles. The default language 
+                     is :es.
 
-/admin/home        -Anyone can get to this page, not just admins. If you're 
-                 an Admin, Songs link is shown.
+/admin             - /admin is only in :en             
 
-/admin/songs/      -Lists all the current songs, and each song has a 'delete'
+/admin/home        - Anyone can get to this page, not just admins. If you're 
+                 an Admin, Songs link is shown. 
+
+/admin/songs/      - Lists all the songs, and each song has a 'delete'
                  and 'edit' button. Also contains a 'new song' button. Only
                  an admin named flocela@gmail.com can add, delete, or change
                  a song, or even get to this page.
