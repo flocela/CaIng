@@ -7,7 +7,7 @@ This is the repository for the Cantando Ingles rails website.
                  using the Android app Cantando Ingles
 
 /admin/home        -Anyone can get to this page, not just admins. If you're 
-                 an Admin-Songs link is shown.
+                 an Admin, Songs link is shown.
 
 /admin/songs/      -Lists all the current songs, and each song has a 'delete'
                  and 'edit' button. Also contains a 'new song' button. Only
