@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'Admin Songs Featuer Spec' do
+RSpec.describe 'Admin Songs Feature Spec' do
   describe 'admin is not signed in' do
     it 'then can not see admin/songs' do
       expect(Admin.count).to equal(0)
@@ -18,7 +18,7 @@ RSpec.describe 'Admin Songs Featuer Spec' do
       expect(current_path).to eql('/')
     end
     
-    it 'New Song link is shown' do
+    it 'visits admin/songs and New Song link is shown' do
       visit('/admin/songs')
       within '.bot-menu' do
         click_link('New Song')

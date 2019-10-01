@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'es/songs Feature Spec' do 
-  describe 'viewing the index' do
+  describe 'viewing the index in spanish' do
     it 'click on English goes to English page' do
       visit('/songs')
       within '.menu-flex-container-sm .link-espanol' do
@@ -32,11 +32,11 @@ RSpec.describe 'es/songs Feature Spec' do
       create("song", id: 10, new_work_title: 'Title 10')
       create("song", id: 20, new_work_title: 'Title 20')
       create("download_count", song_id: 10, 
-                                       month: Date.current.beginning_of_month, 
-                                       month_total: 10)
+                               month: Date.current.beginning_of_month, 
+                               month_total: 10)
       create("download_count", song_id: 20, 
-                                       month: Date.current.beginning_of_month, 
-                                       month_total: 20)
+                               month: Date.current.beginning_of_month, 
+                               month_total: 20)
       visit('/songs')
       expect(page).to have_content('Descargas este mes: 10')
       expect(page).to have_content('Descargas este mes: 20') 

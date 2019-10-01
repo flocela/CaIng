@@ -1,9 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'Canciones Feature Spec' do
+RSpec.describe 'Inicio Feature Spec' do
   it 'displays the name of the app' do
     visit('/home')
-    expect(page).to have_content('Cantando Inglés')
+    within 'h1' do
+      have_content('Cantando Inglés')
+    end
   end
 
   it 'displays link to canciones page' do

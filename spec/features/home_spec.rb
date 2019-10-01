@@ -4,7 +4,9 @@ RSpec.describe 'Home Feature Spec' do
   describe 'en home' do
     it 'displays the name of the app' do
       visit('/en/home')
-      expect(page).to have_content('Cantando Inglés')
+      within 'h1' do
+        have_content('Cantando Inglés')
+      end
     end
     
     it 'displays link to songs page' do
@@ -17,20 +19,5 @@ RSpec.describe 'Home Feature Spec' do
     end
   end
  
-  describe 'es home' do
-    it 'displays the name of the app' do
-      visit('/home')
-      expect(page).to have_content('Cantando Inglés')
-    end
-
-    it 'displays link to songs page' do
-      visit('/home')
-      within '.top-menu' do
-	click_link('Canciones')
-      end
-      expect(current_path).to eql('/es/songs')
-      expect(page).to have_content('Canciones')
-    end
-  end 
 end
 

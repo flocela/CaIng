@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Songs Featuer Spec' do 
+RSpec.describe 'Songs Feature Spec' do 
   describe 'viewing the index' do
     it 'lists all existing songs' do
       create("song", new_work_title: 'new work title 1')
