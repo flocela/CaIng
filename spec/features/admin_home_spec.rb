@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'Admin Home Feature Spec' do
+describe 'Admin Home Feature Spec' do
  
   context "Admin is not signed in then" do
     it 'Sign Out link is not shown' do

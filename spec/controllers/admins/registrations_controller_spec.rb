@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admins::RegistrationsController do
+describe Admins::RegistrationsController do
   let(:flocela_admin_attributes) do
     { "admin" => {
         "email" => "flocela@gmail.com",

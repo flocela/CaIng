@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'Admin Songs Feature Spec' do
+describe 'Admin Songs Feature Spec' do
   describe 'admin is not signed in' do
     it 'then can not see admin/songs' do
       expect(Admin.count).to equal(0)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'es/songs Feature Spec' do 
+describe 'es/songs Feature Spec' do 
   describe 'viewing the index in spanish' do
     it 'click on English goes to English page' do
       visit('/songs')

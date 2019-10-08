@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Song do
+describe Song do
   subject{described_class.new( new_work_title:                     'New Work Title',
                                song_type:                         '1',
                                orig_english_title:                'Original Title In English',

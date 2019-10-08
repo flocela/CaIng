@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SongsController do
+describe SongsController do
   describe 'calling get_zip action' do
     it 'does not download more than 500 songs in a month' do
       create("download_count", 

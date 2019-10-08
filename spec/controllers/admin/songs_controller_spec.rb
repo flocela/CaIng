@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::SongsController do 
+describe Admin::SongsController do 
   describe 'flocela signs in as admin, and ' do
     before(:each) do
       admin = create('admin', email: 'flocela@gmail.com')

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Inicio Feature Spec' do
+describe 'Inicio Feature Spec' do
   it 'displays the name of the app' do
     visit('/home')
     within 'h1' do
