@@ -1,15 +1,25 @@
 require 'rails_helper'
 
 describe 'Home Feature Spec' do
+
   describe 'en home' do
+
     it 'displays the name of the app' do
       visit('/en/home')
       within 'h1' do
         have_content('Cantando Inglés')
       end
     end
+    
+    it 'displays link to songs page' do
+      visit('/en/home')
+	click_link('Songs')
+      expect(current_path).to eql('/en/songs')
+      expect(page).to have_content('Songs')
+    end
+
   end
- 
+
 end
 
 
