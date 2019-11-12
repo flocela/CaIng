@@ -1,0 +1,39 @@
+es:
+  
+  intro_one: "Esta aplicación puede hacer practicando inglés más interesante. Toca canciones mientras muestra las letras en inglés y español. También muestra el significado de las palabras en el contexto de la canción. Algunas canciones son ásperas, otras son felices. Elegí estas canciones porque presentan un poco de la vida en los Estados Unidos, aunque no todas las canciones son estrictamente americanas."
+
+  intro_two: "Cantando Inglés es gratis en la tienda de "
+  intro_three: "Puede descargar las canciones para usar en la aplicación por gratis."
+  intro_four: "Tome un momento para ver el "
+  intro_five: "Para teléfonos con Android 4.0 y superior."
+  
+  google_play_store: "Google Play"
+
+  on_your_way: "Espero que esta app ayude a alguien en su camino."
+
+  home: "Inicio"
+  apps_by_flo: "Apps de Flo"
+  songs: "Canciones"
+  play_store: "Google Play"
+  switch_language: "English"
+
+  songs_intro_one: Descargar canciones para usar en la aplicación Cantando Inglés es gratis. Si está descargando para otros usos, consulte la información de la licencia para conocer las restricciones.  Cada artista ha indicado una licencia para cada canción, encuentre la bajo 'Licencia Original'. El 'Nuevo Trabajo' es la canción original más las traducciones. La licencia del 'Nuevo Trabajo' está bajo 'Nueva Licencia de Trabajo'.
+
+  songs_original_title: Titulo Original
+  songs_original_artist: Artista Original
+  songs_orig_song_uses_samples_from: Canción Original Utiliza Muestras de
+  songs_sample_at: Encuentre Muestra
+  songs_difficulty: Nivel de Dificultad
+  songs_originally_downloaded_at: Descargada Originalmente de
+  songs_originaly_published: Publicada Originalmente
+  songs_lyrics_dated: Letras Originales son Fechadas
+  songs_reference_to_orig_lyrics: Referencia a Letras Originales
+  songs_original_license: Licencia Original
+  songs_new_work_license: Nueva Licencia del Trabajo
+  songs_changes_made: Cambios Realizados
+  songs_attribution_link: Enlace de Atribución
+  songs_filename: Nombre Del Archivo
+  songs_download: Descargar
+  songs_monthly_downloads: Descargas este mes
+  songs_total_downloads: Descargas En Total Este Mes
+
