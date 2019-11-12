@@ -7,7 +7,7 @@ describe 'Home Feature Spec' do
     it 'displays the name of the app' do
       visit('/en/home')
       within 'h1' do
-        have_content('Cantando Inglés')
+        expect(page).to have_content('Cantando Inglés')
       end
     end
     
