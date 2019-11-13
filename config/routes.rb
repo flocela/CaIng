@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {sessions: 'admins/sessions', registrations: 'admins/registrations'}
   resources :posts
   root to: 'home#index'
   scope "(:locale)", locale: /en|es/ do
