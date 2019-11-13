@@ -10,9 +10,14 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+   if params[:admin][:email] == Rails.application.credentials[:admin_email]
+     super
+   else
+     flash[:notice] = "You can't register."
+     redirect_to(new_admin_session_path)  
+   end
+  end
 
   # GET /resource/edit
   # def edit
