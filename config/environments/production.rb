@@ -88,4 +88,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #For Devise Ensure you have defined default url options in your environments files.
+  #config.action_mailer.default_url_options = { :host => 'flobacca.com'}
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #  address: "smtpout.secureserver.net",
+  #  port: 80,
+  #  domain: "flobacca.com",
+  #  authentication: "plain",
+  #  user_name: "info@flobacca.com",
+  #  password: ENV['SECRET_GODADDY_EMAIL_PASSWORD']
+  #}
 end
