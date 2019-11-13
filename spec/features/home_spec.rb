@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe 'Home Feature Spec' do
+describe 'features/home_spec: ' do
 
-  describe 'en home' do
+  describe 'in English home page' do
 
     it 'displays the name of the app' do
       visit('/en/home')
@@ -11,13 +11,38 @@ describe 'Home Feature Spec' do
       end
     end
     
-    it 'displays link to songs page' do
+    it 'on-phone-size: click on Songs, goes to en/songs' do
       visit('/en/home')
+      within '.menu-flex-container-xs' do
 	click_link('Songs')
+      end
       expect(current_path).to eql('/en/songs')
-      expect(page).to have_content('Songs')
+    end
+    
+    it 'on-med-size: click on Songs, goes to en/songs' do
+      visit('/en/home')
+      within '.menu-flex-container-sm' do
+	click_link('Songs')
+      end
+      expect(current_path).to eql('/en/songs')
     end
 
+    it 'on phone-size: click on Espańol goes to Spanish page' do
+      visit('en/home')
+      within '.menu-flex-container-xs' do
+	click_link('Español')
+      end
+      expect(current_path).to eq '/es/home'
+    end
+    
+    it 'on med-size: click on Spanish goes to Spanish page' do
+      visit('/en/home')
+      within '.menu-flex-container-sm' do
+	click_link('Español')
+      end
+      expect(current_path).to eq '/es/home'
+    end
+  
   end
 
 end
