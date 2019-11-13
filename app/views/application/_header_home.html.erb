@@ -1,0 +1,49 @@
+<section class=header-basic>
+  <section class="menu-flex-container-xs">
+    <section class="top-menu">
+      <section class="link link-home">
+	<%= link_to(t('home'), home_path) %>
+      </section>
+      <section class="link link-appsbyflo">
+	<%= link_to(t('apps_by_flo'), "http://appsbyflo.com") %>
+      </section>
+      <section class="link link-all-songs">
+	<%= link_to(t('songs'), songs_path) %>
+      </section>
+    </section>
+    <section class="bot-menu">
+      <section class="link link-play-store">
+	<%= link_to(t('play_store'), "https://play.google.com/store/search?q=cantando%20ingles") %>
+      </section>
+      <section class="link link-espanol">
+	<% if I18n.locale == :es %>
+	  <%= link_to_unless I18n.locale == :en, t('switch_language'), {locale: :en} %>
+	<% else %>
+	  <%= link_to_unless I18n.locale == :es, t('switch_language'), {locale: :es} %>
+	<% end %>
+      </section>
+    </section>
+  </section>
+  <section class="menu-flex-container-sm">
+    <section class="link link-home">
+      <%= link_to(t('home'), home_path) %>
+    </section>
+    <section class="link link-play-store">
+      <%= link_to(t('play_store'), "https://play.google.com/store/search?q=cantando%20ingles") %>
+    </section>
+    <section class="link link-appsbyflo">
+      <%= link_to(t('apps_by_flo'), "http://appsbyflo.com") %>
+    </section>
+    <section class="link link-all-songs">
+      <%= link_to(t('songs'), songs_path) %>
+    </section>
+    <section class="link link-espanol">
+      <% if I18n.locale == :es %>
+        <%= link_to_unless I18n.locale == :en, t('switch_language'), {locale: :en} %>
+      <% else %>
+        <%= link_to_unless I18n.locale == :es, t('switch_language'), {locale: :es} %>
+      <% end %>
+    </section>
+  </section>
+</section>
+
