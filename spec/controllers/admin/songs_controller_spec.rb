@@ -20,6 +20,13 @@ describe Admin::SongsController do
       expect(response).to render_template("new")
     end 
 
+    it 'is allowed to open admin/songs/edit' do
+      song = create("song")
+      get :edit, params: {id: song.id}
+      expect(response).to render_template("edit")
+    end 
+
+
   end
 
 end
