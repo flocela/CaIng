@@ -52,7 +52,7 @@ describe Admin::SongsController do
     
     # I know that update method has two branches. And if 
     # Song.find is not called, then code is immediately 
-    #redirected, without calling any unsafe methods.
+    # redirected, without calling any unsafe methods.
     it 'calls admin/songs/edit with non-integer :id, Song.find is not called.' do
       create("song", id:19, filename: 'act_cool_loveshadow')
       expect(Song).to_not receive(:find_by_id).and_call_original
@@ -66,5 +66,5 @@ describe Admin::SongsController do
     end  
 
   end
-
+  
 end
