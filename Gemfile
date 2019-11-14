@@ -57,6 +57,7 @@ group :test do
   #gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   #gem 'chromedriver-helper'
 end
 
