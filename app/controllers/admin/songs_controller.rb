@@ -11,6 +11,11 @@ class Admin::SongsController < ApplicationController
     song.save!
   end
 
+  def update 
+    song = Song.find(params[:id])
+    song.update!(song_params)
+  end
+
   def song_params
     params.require(:song).permit(:new_work_title, 
                                  :song_type, 
