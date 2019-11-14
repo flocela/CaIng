@@ -13,7 +13,7 @@ class Admin::SongsController < ApplicationController
       @songs = Song.all
       @song = Song.new()
     else
-      redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
+      redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
     end
 
   end
@@ -27,7 +27,7 @@ class Admin::SongsController < ApplicationController
 	@song = Song.find_by_id(params[:id])
       end 
     else
-      redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
+      redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
     end
   end 
 
@@ -35,6 +35,7 @@ class Admin::SongsController < ApplicationController
     if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
       song = Song.new(song_params)
       song.save!
+      redirect_to(admin_songs_path)
     else
       redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
     end
