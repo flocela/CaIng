@@ -79,6 +79,17 @@ describe Admin::SongsController do
       get :index
       expect(response).to redirect_to(new_admin_session_path)
     end
+    
+    it 'is not allowed to open admin/songs/new' do
+      get :new
+      expect(response).to redirect_to(new_admin_session_path)
+    end 
+    
+    it "is not allowed to open admin/songs/edit" do
+      song = create("song")
+      get :edit, params: {id: 1}
+      expect(response).to redirect_to(new_admin_session_path)
+    end
 
   end
 

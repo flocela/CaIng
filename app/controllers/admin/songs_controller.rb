@@ -9,15 +9,26 @@ class Admin::SongsController < ApplicationController
   end
   
   def new
+    if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
+      @songs = Song.all
+      @song = Song.new()
+    else
+      redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
+    end
+
   end
   
   def edit
-    if (!params[:id].scan(/\D/).empty?)
-      flash[:notice] = 'that is not an integer'
-      redirect_to(admin_songs_path)
-    else 
-      @song = Song.find_by_id(params[:id])
-    end 
+    if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
+      if (!params[:id].scan(/\D/).empty?)
+	flash[:notice] = 'that is not an integer'
+	redirect_to(admin_songs_path)
+      else 
+	@song = Song.find_by_id(params[:id])
+      end 
+    else
+      redirect_back(fallback_location: admin_session_path, method: :delete, alert: "Access denied.")
+    end
   end 
 
   def create
