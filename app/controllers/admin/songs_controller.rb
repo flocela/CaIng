@@ -48,12 +48,15 @@ class Admin::SongsController < ApplicationController
     else
       redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
     end
-
   end
 
   def destroy
-    song = Song.find(params[:id])
-    song.destroy
+    if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
+      song = Song.find(params[:id])
+      song.destroy
+    else
+      redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
+    end
   end
 
   def song_params
