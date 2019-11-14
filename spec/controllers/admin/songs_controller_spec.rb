@@ -50,13 +50,20 @@ describe Admin::SongsController do
         .to change(Song, :count).by(-1)
     end
     
-    # I know that update method has two branches. And if Song.find is not called, then code is immediately redirected, without calling any unsafe methods.
-    it 'calls admin/songs/edit with a non-integer :id,
-        the result is Song.find is not called. An integer inside a string is okay, "19"' do
+    # I know that update method has two branches. And if 
+    # Song.find is not called, then code is immediately 
+    #redirected, without calling any unsafe methods.
+    it 'calls admin/songs/edit with non-integer :id, Song.find is not called.' do
       create("song", id:19, filename: 'act_cool_loveshadow')
       expect(Song).to_not receive(:find_by_id).and_call_original
       get :edit, params: {"id":"19a"}
     end
+
+    it 'calls admin/songs/edit with a non-integer :id, results in flash notice' do
+      create("song", id:19, filename: 'act_cool_loveshadow')
+      get :edit, params: {"id":"19a"}
+      expect(flash[:notice]).to match('that is not an integer') 
+    end  
 
   end
 
