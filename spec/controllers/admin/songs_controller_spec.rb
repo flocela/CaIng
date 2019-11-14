@@ -67,7 +67,7 @@ describe Admin::SongsController do
 
   end
   
-  describe 'Admin other than flocelas sings in (although only flocela is allowed to
+  describe 'Admin other than flocelas signs in (although only flocela is allowed to
             register) and ' do
     
     before(:each) do
@@ -95,6 +95,15 @@ describe Admin::SongsController do
       song_attributes = attributes_for(:song)
       expect {post(:create, params: {song: song_attributes})}
         .to change(Song, :count).by(0)
+    end
+    
+    it 'is not allowed to update a song' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      expect(Song.count).to eq(1)
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      put :update, params: {id: song1.id, song: {new_work_title: "changed title"}}
+      expect(Song.find(song1.id).new_work_title).to eql("new work title 1")    
     end
 
   end
