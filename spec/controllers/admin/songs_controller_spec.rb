@@ -49,6 +49,14 @@ describe Admin::SongsController do
       expect {delete :destroy, params: { id: song1.id }}
         .to change(Song, :count).by(-1)
     end
+    
+    # I know that update method has two branches. And if Song.find is not called, then code is immediately redirected, without calling any unsafe methods.
+    it 'calls admin/songs/edit with a non-integer :id,
+        the result is Song.find is not called. An integer inside a string is okay, "19"' do
+      create("song", id:19, filename: 'act_cool_loveshadow')
+      expect(Song).to_not receive(:find_by_id).and_call_original
+      get :edit, params: {"id":"19a"}
+    end
 
   end
 

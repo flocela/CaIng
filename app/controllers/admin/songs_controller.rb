@@ -4,6 +4,12 @@ class Admin::SongsController < ApplicationController
   end
   
   def edit
+    if (!params[:id].scan(/\D/).empty?)
+      flash[:notice] = 'that is not an integer'
+      redirect_to(admin_songs_path)
+    else 
+      @song = Song.find_by_id(params[:id])
+    end 
   end 
 
   def create
