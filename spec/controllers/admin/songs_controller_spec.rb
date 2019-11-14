@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'admin/songs_controller' #otherwise routes will default to /songs.
 
 describe Admin::SongsController do 
 
