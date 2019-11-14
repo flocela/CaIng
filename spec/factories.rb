@@ -1,10 +1,12 @@
 FactoryBot.define do
   
   factory :admin do
-    email {"flocela@gmail.com"}
+    email {"admin@gmail.com"}
     password {"12341234"}
     password_confirmation {"12341234"}
   end
+
+  
 
   factory :song do
     new_work_title {"new work title"}
