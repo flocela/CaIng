@@ -16,6 +16,11 @@ class Admin::SongsController < ApplicationController
     song.update!(song_params)
   end
 
+  def destroy
+    song = Song.find(params[:id])
+    song.destroy
+  end
+
   def song_params
     params.require(:song).permit(:new_work_title, 
                                  :song_type, 

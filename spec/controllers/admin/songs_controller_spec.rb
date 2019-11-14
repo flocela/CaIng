@@ -41,6 +41,15 @@ describe Admin::SongsController do
       expect(Song.find(song1.id).new_work_title).to eql("changed title")    
     end
 
+    it 'is allowed to delete a song' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      expect(Song.count).to eq(1)
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      expect {delete :destroy, params: { id: song1.id }}
+        .to change(Song, :count).by(-1)
+    end
+
   end
 
 end
