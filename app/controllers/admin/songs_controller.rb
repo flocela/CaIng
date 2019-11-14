@@ -1,4 +1,12 @@
 class Admin::SongsController < ApplicationController
+
+  def index
+    if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
+      @songs = Song.all
+    else
+      redirect_to(new_admin_session_path, alert: "Access denied.")
+    end
+  end
   
   def new
   end
