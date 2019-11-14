@@ -32,8 +32,12 @@ class Admin::SongsController < ApplicationController
   end 
 
   def create
-    song = Song.new(song_params)
-    song.save!
+    if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
+      song = Song.new(song_params)
+      song.save!
+    else
+      redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
+    end
   end
 
   def update 

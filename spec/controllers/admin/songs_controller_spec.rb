@@ -91,6 +91,12 @@ describe Admin::SongsController do
       expect(response).to redirect_to(new_admin_session_path)
     end
 
+    it 'is not allowed to create a song ' do
+      song_attributes = attributes_for(:song)
+      expect {post(:create, params: {song: song_attributes})}
+        .to change(Song, :count).by(0)
+    end
+
   end
 
 end
