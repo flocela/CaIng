@@ -26,6 +26,11 @@ describe Admin::SongsController do
       expect(response).to render_template("edit")
     end 
 
+    it 'is allowed to create a song' do
+      song_attributes = attributes_for(:song)
+      expect {post(:create, params: {song: song_attributes})}
+        .to change(Song, :count).by(1)
+    end
 
   end
 
