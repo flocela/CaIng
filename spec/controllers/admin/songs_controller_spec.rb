@@ -65,9 +65,28 @@ describe Admin::SongsController do
       expect(flash[:notice]).to match('that is not an integer') 
     end  
 
+    # I know that update method has two branches. And if 
+    # Song.find is not called, then code is immediately 
+    # redirected, without calling any unsafe methods.
+    it 'calls admin/songs/update with non-integer :id, Song.find is not called.' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      expect(Song).to_not receive(:find_by_id).and_call_original
+      put :update, params: {"id": "1a", song: {new_work_title: "changed title"}}
+    end
+
+    it 'calls admin/songs/update with a non-integer :id, results in flash notice' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      put :update, params: {"id": "1a", song: {new_work_title: "changed title"}}
+      expect(flash[:notice]).to match('that is not an integer') 
+    end  
+
   end
   
-  describe 'Admin other than flocelas signs in (although only flocela is allowed to
+  describe 'Admin other than flocela signs in (although only flocela is allowed to
             register) and ' do
     
     before(:each) do
