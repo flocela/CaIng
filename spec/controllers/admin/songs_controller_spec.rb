@@ -50,7 +50,7 @@ describe Admin::SongsController do
         .to change(Song, :count).by(-1)
     end
     
-    # I know that update method has two branches. And if 
+    # I know that edit method has two branches. And if 
     # Song.find is not called, then code is immediately 
     # redirected, without calling any unsafe methods.
     it 'calls admin/songs/edit with non-integer :id, Song.find is not called.' do
@@ -81,6 +81,25 @@ describe Admin::SongsController do
       create("song", new_work_title: 'new work title 2')
       expect(Song.count).to eq(2)
       put :update, params: {"id": "1a", song: {new_work_title: "changed title"}}
+      expect(flash[:notice]).to match('that is not an integer') 
+    end  
+
+    # I know that destroy method has two branches. And if 
+    # Song.find is not called, then code is immediately 
+    # redirected, without calling any unsafe methods.
+    it 'calls admin/songs/destroy with non-integer :id, Song.find is not called.' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      expect(Song).to_not receive(:find_by_id).and_call_original
+      delete :destroy, params: {"id": "12a"}
+    end
+
+    it 'calls admin/songs/destroy with a non-integer :id, results in flash notice' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      delete :destroy, params: {"id": "12a"}
       expect(flash[:notice]).to match('that is not an integer') 
     end  
 
