@@ -15,7 +15,16 @@ class Admin::SongsController < ApplicationController
     else
       redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
     end
-
+  end
+  
+  def create
+    if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
+      song = Song.new(song_params)
+      song.save!
+      redirect_to(admin_songs_path)
+    else
+      redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
+    end
   end
   
   def edit
@@ -30,16 +39,6 @@ class Admin::SongsController < ApplicationController
       redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
     end
   end 
-
-  def create
-    if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
-      song = Song.new(song_params)
-      song.save!
-      redirect_to(admin_songs_path)
-    else
-      redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
-    end
-  end
 
   def update 
     if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
@@ -56,7 +55,6 @@ class Admin::SongsController < ApplicationController
   end
 
   def destroy
-    puts(params[:id])
     if current_admin && current_admin.email == Rails.application.credentials[:admin_email]
       if (!params[:id].scan(/\D/).empty?)
 	flash[:notice] = 'that is not an integer'

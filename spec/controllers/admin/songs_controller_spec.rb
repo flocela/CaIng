@@ -155,4 +155,49 @@ describe Admin::SongsController do
 
   end
 
+  describe 'No admin signs in and ' do
+    
+    it 'is not allowed to open admin/songs/index' do
+      get :index
+      expect(response).to redirect_to(new_admin_session_path)
+    end
+
+    it 'is not allowed to open admin/songs/new' do
+      I18n.locale = :en     
+      get :new
+      expect(response).to redirect_to(new_admin_session_path)
+    end 
+
+    it 'is not allowed to create a song' do
+      song_attributes = attributes_for(:song)
+      expect {post(:create, params: { song: song_attributes})}
+        .to change(Song, :count).by(0)
+    end
+    
+    it "is not allowed to open admin/songs/edit" do
+      song = create("song")
+      get :edit, params: {id: 1}
+      expect(response).to redirect_to(new_admin_session_path)
+    end
+
+    it 'is not allowed to update a song' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      expect(Song.count).to eq(1)
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      put :update, params: {id: song1.id, song: {new_work_title: "changed title"}}
+      expect(Song.find(song1.id).new_work_title).to eql("new work title 1")    
+    end
+
+    it 'is not allowed to delete a song' do
+      song1 = create("song", new_work_title: 'new work title 1')
+      expect(Song.count).to eq(1)
+      create("song", new_work_title: 'new work title 2')
+      expect(Song.count).to eq(2)
+      expect {delete :destroy, params: { id: song1.id }}
+        .to change(Song, :count).by(0)
+    end
+
+  end 
+
 end
