@@ -32,7 +32,33 @@ describe SongsController do
       get :get_zip, params: {id:19}
       expect(DownloadCount.find_by(song_id:19).month_total).to eq(2)
     end
-
+    
+    it 'does not download more than 500 songs in a month' do
+      create("download_count", 
+             month: Time.parse("2019-07-01"), 
+             month_total:400)
+      create("download_count", 
+             month: Date.current.beginning_of_month, 
+             month_total:499)
+      create("song", id:2, filename: 'act_cool_loveshadow')
+      filepath = "#{Rails.root}/app/assets/songs/act_cool_loveshadow.zip" 
+   
+      expect_any_instance_of(SongsController).to receive(:send_file)
+	.with(filepath,
+	      :filename => 'act_cool_loveshadow.zip',
+	      :url_based_filename => false,
+	      :type => 'application/zip')
+	.and_call_original
+	get :get_zip, params: {id:2}
+      
+      expect_any_instance_of(SongsController).not_to receive(:send_file)
+	.with(filepath,
+  	      :filename => 'act_cool_loveshadow.zip',
+	      :url_based_filename => false, 
+	      :type => 'application/zip')
+	.and_call_original
+      get :get_zip, params: {id:2}
+    end 
 
   end
 

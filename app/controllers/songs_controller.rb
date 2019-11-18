@@ -4,7 +4,10 @@ class SongsController < ApplicationController
   end
 
   def get_zip
-    if (!params[:id].scan(/\D/).empty?)
+    if (DownloadCount.where(:month => first_of_month).sum(:month_total) >= 500)
+      flash[:notice] = "Already have 500 downloads"
+      redirect_to(songs_path)  
+    elsif (!params[:id].scan(/\D/).empty?)
       flash[:notice] = "that is not an integer"
       redirect_to(songs_path)
     else
