@@ -4,8 +4,13 @@ class SongsController < ApplicationController
   end
 
   def get_zip
-    song = Song.find_by_id(params[:id])
-    send_song_from_aws(song)
+    if (!params[:id].scan(/\D/).empty?)
+      flash[:notice] = "that is not an integer"
+      redirect_to(songs_path)
+    else
+      song = Song.find_by_id(params[:id])
+      send_song_from_aws(song)
+    end
   end 
 
   private
@@ -25,6 +30,14 @@ class SongsController < ApplicationController
                 :url_based_filename => false, 
                 :type=>"application/zip"
       File.delete(filepath) if(File.exists?(filepath))
+  end
+  
+  def aws_key_id
+    Rails.application.credentials.development[:aws][:access_key_id]
+  end
+
+  def aws_secret_access_key
+      Rails.application.credentials.development[:aws][:secret_access_key]
   end
 
 end
