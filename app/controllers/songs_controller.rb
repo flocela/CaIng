@@ -10,6 +10,7 @@ class SongsController < ApplicationController
     else
       song = Song.find_by_id(params[:id])
       send_song_from_aws(song)
+      update_download_count(song)
     end
   end 
 
@@ -30,6 +31,24 @@ class SongsController < ApplicationController
                 :url_based_filename => false, 
                 :type=>"application/zip"
       File.delete(filepath) if(File.exists?(filepath))
+  end
+
+  def update_download_count(song) 
+      downloadCountObj = DownloadCount.find_by(song_id: song.id, 
+                                               month: first_of_month)
+      if (downloadCountObj)
+	downloadCountObj.month_total = downloadCountObj.month_total + 1
+	downloadCountObj.save
+      else
+	newDownloadCountObj = DownloadCount.new(:song_id => song.id, 
+                                             month: first_of_month, 
+                                             :month_total => 1)
+	newDownloadCountObj.save
+      end
+  end 
+
+  def first_of_month
+    Date.current.beginning_of_month
   end
   
   def aws_key_id

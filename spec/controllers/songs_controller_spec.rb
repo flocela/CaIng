@@ -24,6 +24,14 @@ describe SongsController do
       get :get_zip, params: {"id":"15a"} 
       expect(flash[:notice]).to match('that is not an integer')
     end   
+    
+    it "increases a song's monthly download count when the song is downloaded" do
+      song = create("song", id:19, filename: 'act_cool_loveshadow')
+      get :get_zip, params: {id:19}
+      expect(DownloadCount.find_by(song_id:19).month_total).to eq(1)
+      get :get_zip, params: {id:19}
+      expect(DownloadCount.find_by(song_id:19).month_total).to eq(2)
+    end
 
 
   end
