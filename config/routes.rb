@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get('home' => 'home#index')
     get('songs' => 'songs#index')
   end
+  get "songs/get_zip/:id" => "songs#get_zip", :as => "songs_get_zip"
   get 'welcome/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
