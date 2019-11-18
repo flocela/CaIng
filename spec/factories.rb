@@ -6,8 +6,6 @@ FactoryBot.define do
     password_confirmation {"12341234"}
   end
 
-  
-
   factory :song do
     new_work_title {"new work title"}
     song_type {"1"}
@@ -23,6 +21,12 @@ FactoryBot.define do
     orig_spanish_changes_made {"changes made in spanish"}
     filename {"filename"}
     zip_size {5}
+  end
+  
+  factory :download_count do
+    song_id { 1 }
+    month { "2019-11-01" }
+    month_total {0}
   end
 
 end
