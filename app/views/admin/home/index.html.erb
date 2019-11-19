@@ -1,0 +1,43 @@
+  <section class="admin-links-column">
+    <% if admin_signed_in? %>
+      <section class="admin-link">
+	<%= link_to('Admin-Songs', admin_songs_path) %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Delete Registration', admin_registration_path, method: :delete %>
+      </section>
+    <% else %>
+      <section class="admin-link">
+	<%= link_to 'Sign In', new_admin_session_path %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Register', new_admin_registration_path%>
+      </section>
+    <% end %>
+
+  </section>
+  <section class="admin-links-flex-container">
+    <% if admin_signed_in? %>
+      <section class="admin-link">
+	<%= link_to('Admin-Songs', admin_songs_path) %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Delete Registration', admin_registration_path, method: :delete %>
+      </section>
+    <% else %>
+      <section class="admin-link">
+	<%= link_to 'Sign In', new_admin_session_path %>
+      </section>
+      <section class="admin-link">
+	<%= link_to 'Register', new_admin_registration_path%>
+      </section>
+    <% end %>
+  
+  </section>
+
