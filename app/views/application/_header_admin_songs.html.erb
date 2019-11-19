@@ -1,0 +1,39 @@
+<section class=header-admin-songs-wrapper>
+  <section class="menu-flex-container-xs">
+    <section class="top-menu">
+      <section class="link link-home">
+	<%= link_to('Home', home_path) %>
+      </section>
+      <section class="link admin-home">
+	<%= link_to('Admin Home', admin_home_path) %>
+      </section>
+      <section class="link sign-out">
+	<%= link_to('Sign-Out', destroy_admin_session_path, method: :delete) %>
+      </section>
+    </section>
+    <section class="bot-menu">
+      <section class="link admin-songs">
+	<%= link_to('Admin Songs', admin_songs_path) %>
+      </section>
+      <section class="link new-song">
+	<%= link_to('New Song', new_admin_song_path) %> 
+      </section>
+    </section>
+  <section class="menu-flex-container-sm">
+    <section class="link link-home">
+      <%= link_to('Home', home_path) %>
+    </section>
+    <section class="link admin-home">
+      <%= link_to('Admin Home', admin_home_path) %>
+    </section>
+    <section class="link admin-songs">
+      <%= link_to('Admin Songs', admin_songs_path) %>
+    </section>
+    <section class="link new-song">
+      <%= link_to('New Song', new_admin_song_path) %> 
+    </section>
+    <section class="link sign-out">
+      <%= link_to('Sign-Out', destroy_admin_session_path, method: :delete) %>
+  </section>
+</section>
+
