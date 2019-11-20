@@ -1,3 +1,68 @@
 <h1>Cantando Inglés</h1>
   <%= render 'header_admin_songs' %>
+  <section class="songs-flex-container">
+    <% @songs.each do |song| %>
+      <section class="song-box">
+        <section class=song-title>
+          <%= song.new_work_title%>
+        </section>
+        <section class=labels>
+	  <section class="song_info orig-title">
+	    Original Title: 
+	    <%= song.orig_english_title %>
+	  </section>
+	  <section class="song_info orig-artist">
+	    Original Artist:  <%= song.orig_artist %>
+	  </section>
+          <% if song.orig_english_uses_sample_from_1? %>
+	    <section class=song_info>
+	      Orig song uses samples from: <%= song.orig_english_uses_sample_from_1%>
+	    </section>
+	    <section class=song_info>
+	      Sample at: <%= link_to song.orig_uses_sample_from_link_name_1, song.orig_uses_sample_from_link_1 %>
+          <% end %>  
+	  <section class=song_info>
+	    Difficulty of Song: <%= song.song_type %>
+	  </section>
+	  <section class=song_info>
+	    Originally Downloaded at:  <%= link_to song.orig_downloaded_at_name, song.orig_downloaded_at_link  %>
+	  </section>
+          <section class=song_info>
+            Original Published: <%= song.orig_pub_date %>
+	  </section>
+	  <section class=song_info>
+	    Original Lyrics Dated: <%= song.orig_lyrics_date %>
+	  </section>
+	  <section class=song_info>
+	    Reference to Original Lyrics: <%= link_to song.orig_lyrics_date_link_name, song.orig_lyrics_date_link %>
+	  </section>
+	  <section class=song_info>
+	    Original License: <%= link_to song.orig_lyrics_date_link_name, song.orig_lyrics_date_link %>
+	  </section>
+	  <section class=song_info>
+	    New Work License: <%= link_to song.name_of_new_work_license, song.link_to_new_work_license %>
+	  </section>
+	  <section class=song_info>
+	    Changes Made: <%= song.orig_english_changes_made %>
+	  </section>
+	  <section class=song_info>
+	    <%= link_to 'Attribution Link', song.orig_attribution_link %>
+	  </section>
+	  <section class="song_info filename">
+	    Filename: <%= song.filename %>.zip
+	  </section>
+	  <section class=song_info>
+	    File size: <%= song.zip_size %>
+	  </section>
+          <section class=song_info>
+            <%= link_to 'Delete', "songs/#{song.id}", method: :delete, data: { confirm: 'Are you sure?' } %> 
+          </section>
+          <section class=song_info>
+            <%= link_to 'Edit', "songs/#{song.id}/edit", method: :get %> 
+          </section>
+        </section>
+      </section>
+    <% end %>
+  </section>
+</section>
 

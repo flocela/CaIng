@@ -48,6 +48,7 @@ class Admin::SongsController < ApplicationController
       else
 	song = Song.find_by_id(params[:id])
 	song.update!(song_params)
+        redirect_to(admin_songs_path)
       end
     else
       redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")
@@ -62,6 +63,7 @@ class Admin::SongsController < ApplicationController
       else
 	song = Song.find_by_id(params[:id])
 	song.destroy
+	redirect_to(admin_songs_path)
       end
     else
       redirect_back(fallback_location: new_admin_session_path, method: :delete, alert: "Access denied.")

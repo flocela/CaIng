@@ -1,1 +1,240 @@
 <h1>Cantando Inglés</h1>
+<%= render 'header_admin_songs' %>
+<h2>New Song</h2>
+<%= form_for [:admin, @song] do |f| %>
+  <section class="song-info-flex-container">
+    <section class="song-info">
+      <label>
+	<section class=description>
+	  New Work Title:
+	</section>
+	<section class=input>
+	  <%= f.text_field(:new_work_title, size:"75") %>
+	</section>
+      </label>
+    <section class="song-info">
+      <label>
+	<section class=description>
+	  Original Title in English:
+	</section>
+	<section class=input>
+	  <%= f.text_field(:orig_english_title, size:"75") %>
+	</section>
+      </label>
+    </section>
+    <section class="song-info">
+      <label>
+	<section class=description>
+	  Original Artist:
+	</section>
+	<section class=input>
+	  <%= f.text_field(:orig_artist, size:"75") %>
+	</section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Song Type:
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:song_type, size:"10") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Originally Downloaded At (name):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_downloaded_at_name, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Originally Downloaded At (link):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_downloaded_at_link, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Original License (name):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_license_name, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Original License (link):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_license_link, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   New License (name):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:name_of_new_work_license, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   New License (link):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:link_to_new_work_license, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Filename:
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:filename, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   File Size:
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:zip_size, size:"10") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Changes Made To Orig (english):
+	 </section>
+	 <section class=input>
+	   <%= f.text_area(:orig_english_changes_made, cols:"75", rows:"8") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Changes Made To Orig (spanish):
+	 </section>
+	 <section class=input>
+	   <%= f.text_area(:orig_spanish_changes_made, cols:"75", rows:"8") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Attribution Link: 
+	 </section>
+	 <section class=input>
+	   <%= f.text_area(:orig_attribution_link, cols:"75", rows:"2") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Originally Published Date:
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_pub_date, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Original Lyrics Dated:
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_lyrics_date, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Original Lyrics Date (link name):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_lyrics_date_link_name, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Original Lyrics Date (link):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_lyrics_date_link, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Uses Samples From (english):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_spanish_uses_sample_from_1, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Uses Samples From (spanish):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_english_uses_sample_from_1, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Uses Samples From (link name):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_uses_sample_from_link_name_1, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class="song-info">
+       <label>
+	 <section class=description>
+	   Uses Samples From (link):
+	 </section>
+	 <section class=input>
+	   <%= f.text_field(:orig_uses_sample_from_link_1, size:"75") %>
+	 </section>
+       </label>
+     </section>
+     <section class=create-button>
+       <%= submit_tag "Create" %>  
+     </section>
+  </section>
+<% end %>
+
